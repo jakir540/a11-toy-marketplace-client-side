@@ -51,7 +51,7 @@ const Navbar = () => {
                   </Link>
 
                   <Link
-                    to="#"
+                    to="/blogs"
                     className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                   >
                   Blogs
@@ -159,11 +159,11 @@ const Navbar = () => {
                 </Link>
 
                 <Link
-                  to="#"
-                  className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-                >
+                    to="/blogs"
+                    className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                  >
                   Blogs
-                </Link>
+                  </Link>
 
                 <Link
                   to="#"
