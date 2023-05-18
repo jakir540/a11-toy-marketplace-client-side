@@ -8,7 +8,7 @@ const Toy = ({ toy }) => {
     <div className="card w-96 bg-base-100 shadow-xl">
       <figure>
         <img
-          //   src={picture_url}
+          // src={picture_url}
           src="https://5.imimg.com/data5/PF/PG/MY-55849933/kids-racing-car-toys-1000x1000.jpg"
           alt="toys"
         />
@@ -20,7 +20,7 @@ const Toy = ({ toy }) => {
         </h2>
         <p>Price: {price}</p>
         <div className="card-actions justify-end">
-          <Link to={`/viewDetails/${_id}`}>
+          <Link to={`/viewDetailsCard/${_id}`}>
             
             <button className="btn btn-outline">View Details</button>
           </Link>

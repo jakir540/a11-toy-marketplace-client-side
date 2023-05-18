@@ -14,6 +14,7 @@ import Errorpage from './components/Errorpage.jsx';
 import AuthProvider from './Provider/AuthProvider.jsx';
 import Login from './Pages/Login/Login.jsx';
 import Register from './Pages/Register/Register.jsx';
+import ViewDetailsCard from './Pages/ViewDetailsCard/ViewDetailsCard.jsx';
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,11 @@ const router = createBrowserRouter([
       {
         path:'/register',
         element:<Register></Register>
+      },
+      {
+        path:'/viewDetailsCard/:id',
+        element:<ViewDetailsCard></ViewDetailsCard>,
+        loader:({params})=> fetch(`http://localhost:5000/viewDetailsCard/${params.id}`)
       }
     ]
   },
