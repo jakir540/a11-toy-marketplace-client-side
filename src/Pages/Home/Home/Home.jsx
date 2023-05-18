@@ -1,6 +1,7 @@
 import React from "react";
 import Gallery from "../Gallery/Gallery";
 import Toys from "../AllToys/AllToys";
+import AllToys from "../AllToys/AllToys";
 
 const Home = () => {
   return (
@@ -29,7 +30,7 @@ const Home = () => {
           </h2>
         </div>
         <Gallery></Gallery>
-      
+      <AllToys></AllToys>
       </section>
       
     </main>
