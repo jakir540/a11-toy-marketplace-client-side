@@ -1,8 +1,9 @@
 import React from "react";
+import Gallery from "../Gallery/Gallery";
 
 const Home = () => {
   return (
-    <div>
+    <main>
   
      
       <div className=" w-full mb-16">
@@ -21,9 +22,14 @@ const Home = () => {
           <button>visite more</button>
         </div>
       </div>
-
-    
-    </div>
+      {/* gallery seciton */}
+    <section>
+      <div>
+        <h2 className="text-center text-5xl text-orange-500 font-semibold">Photo Gallery</h2>
+      </div>
+    <Gallery></Gallery>
+    </section>
+    </main>
   );
 };
 
