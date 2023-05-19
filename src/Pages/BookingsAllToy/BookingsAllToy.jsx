@@ -13,18 +13,45 @@ const BookingsAllToy = () => {
       });
   }, []);
   return (
-    <div className="my-16">
-      <h1 className="text-center text-4xl text-orange-500 font-bold">
-        All Toys {allToys.length}
-      </h1>
+    <div className="mt-5">
+      <div className="flex justify-center flex-col gap-4">
+        <h1 className="text-center text-4xl text-orange-500 font-bold">
+          All Toys {allToys.length}
+        </h1>
 
-      <div className="my-10 flex justify-center ">
+        <div className=" w-[400px]  mx-auto h-[100px] ">
+          <form>
+            <div className="flex flex-col items-center my-3  ">
+              <div className="flex gap-4">
+
+                <input
+                  className="p-3   shadow-2xl rounded-md border border-orange-500 "
+                  type="text"
+                  name="name"
+                  placeholder="Enter Toy Name"
+                />
+
+
+                <button                  
+                  type="submit"
+                  className="bg-slate-500 p-3 btn border-none w-32"
+                >
+                  searce toy
+                </button>
+
+
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div className=" flex justify-center ">
         <div className=" max-w-7xl w-full ">
           <table className="table w-full">
             {/* head */}
             <thead>
               <tr>
-                
                 <th>Seller & Toy Name</th>
                 <th>Price</th>
                 <th>Availabel Quantity</th>
@@ -42,8 +69,6 @@ const BookingsAllToy = () => {
           </table>
         </div>
       </div>
-
-
     </div>
   );
 };
