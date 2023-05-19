@@ -1,27 +1,45 @@
 import React, { useContext, useState } from "react";
-
+import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
+import { updateProfile } from "firebase/auth";
 
 const Register = () => {
   const { createAuthUser } = useContext(AuthContext);
+  const [user,setUser] = useState(null)
+  const [error,setError] = useState("")
 
   const handleRegistration = (event) => {
+    setError("")
     event.preventDefault();
     const form = event.target;
-
     const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
     const photo = form.photo.value;
+    form.reset();
     console.log(name, email, password, photo);
+
+    if (password.length < 6) {
+      setError('Password Must be give minimum 6 character')
+    }
 
     createAuthUser(email, password)
       .then((result) => {
         const user = result.user;
+        user.displayName = name;
+        user.photURL = photo;
+        updateProfile(name,photo)
         console.log(user);
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Register Successfully",
+          showConfirmButton: false,
+          timer: 2000,
+        });
       })
-      .catch((error) => console.log(error));
+      .catch((error) => setError(error.message));
   };
 
   return (
@@ -79,6 +97,8 @@ const Register = () => {
               </p>
             </div>
           </div>
+
+          <p className="form-text text-red-500 text-center">{error}</p>
         </form>
       </div>
     </div>

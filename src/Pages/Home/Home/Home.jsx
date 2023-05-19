@@ -2,6 +2,7 @@ import React from "react";
 import Gallery from "../Gallery/Gallery";
 import Toys from "../AllToys/AllToys";
 import AllToys from "../AllToys/AllToys";
+import Advertisement from "../CustomerReview/Advertisement";
 
 const Home = () => {
   return (
@@ -31,6 +32,7 @@ const Home = () => {
         </div>
         <Gallery></Gallery>
       <AllToys></AllToys>
+      <Advertisement></Advertisement>
       </section>
       
     </main>
