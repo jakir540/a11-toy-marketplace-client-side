@@ -15,12 +15,14 @@ const AddToy = () => {
     const price = form.price.value;
     const quantity = form.quantity.value;
     const description = form.description.value;
+    const category = form.category.value;
     const insertBody = {
       name,
       email,
       photo,
       rating,
       price,
+      category,
       quantity,
       description,
     };
