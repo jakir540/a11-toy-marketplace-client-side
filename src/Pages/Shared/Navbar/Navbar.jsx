@@ -1,10 +1,22 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Transition } from "@headlessui/react";
 import { Link } from "react-router-dom";
 import { MdToys } from "react-icons/all";
+import { AuthContext } from "../../../Provider/AuthProvider";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { user, logOut } = useContext(AuthContext);
+  console.log(user);
+
+  const handleLogout = () => {
+    logOut()
+      .then()
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <div>
       <nav className="bg-gray-800">
@@ -36,19 +48,23 @@ const Navbar = () => {
                       Home
                     </Link>
 
-                    <Link
-                      to="/allToys"
-                      className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                    >
-                      All Toys
-                    </Link>
+                    {user && (
+                      <Link
+                        to="/allToys"
+                        className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                      >
+                        All Toys
+                      </Link>
+                    )}
 
-                    <Link
-                      to="#"
-                      className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                    >
-                      Add Toy
-                    </Link>
+                    {user && (
+                      <Link
+                        to="#"
+                        className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                      >
+                        Add Toy
+                      </Link>
+                    )}
 
                     <Link
                       to="/blogs"
@@ -56,22 +72,37 @@ const Navbar = () => {
                     >
                       Blogs
                     </Link>
-
-                    <Link
-                      to="/login"
-                      className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                    >
-                      Login
-                    </Link>
                   </div>
 
-                  <div>
-                    <Link
-                      to="#"
-                      className="text-gray-300  hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                    >
-                      Profile
-                    </Link>
+                  <div className="md:flex items-center ">
+                    <div>
+                      {user && (
+                        <button
+                          onClick={handleLogout}
+                          className=" bg-orange-900 rounded-md p-3 text-white font-semibold md:mx-5 ms-5 "
+                        >
+                          Logout
+                        </button>
+                      )}
+                    </div>
+
+                    {user ? (
+                      <div>
+                        <img
+                          className="mx-3 rounded-full h-12"
+                          src={user.photoURL}
+                          alt="UserProfile"
+                          title={user && user.displayName}
+                        />
+                      </div>
+                    ) : (
+                      <Link
+                        to="/login"
+                        className="bg-orange-900 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md  font-medium text-white"
+                      >
+                        Login
+                      </Link>
+                    )}
                   </div>
                 </div>
               </div>

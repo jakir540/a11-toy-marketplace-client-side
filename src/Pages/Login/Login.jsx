@@ -1,12 +1,16 @@
-import React, { useContext } from "react";
-import { useForm } from "react-hook-form";
+import React, { useContext, useState } from "react";
+
 import { Link } from "react-router-dom";
 import { FaGoogle } from "react-icons/fa";
 import { AuthContext } from "../../Provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const { googleSignIn, signIn } = useContext(AuthContext);
+  const [error, setError] = useState("");
+
   const handleSubmit = (event) => {
+    setError("");
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
@@ -14,25 +18,41 @@ const Login = () => {
     signIn(email, password)
       .then((result) => {
         const loggedUser = result.user;
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Login Successfully",
+          showConfirmButton: false,
+          timer: 2000,
+        });
         console.log(loggedUser);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => setError(error.message));
   };
 
   const handleGoogleLogin = () => {
+    setError("");
     googleSignIn()
       .then((result) => {
         const user = result.user;
+
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Google Login Successfully",
+          showConfirmButton: false,
+          timer: 2000,
+        });
         console.log(user);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => setError(error.message));
   };
   return (
     <div className=" w-[400px]  bg-slate-200 mx-auto h-[450px] my-32 rounded-lg shadow-2xl">
       <form onSubmit={handleSubmit} className="">
-        <div className="flex flex-col items-center mt-36 p-12  ">
+        <div className="flex flex-col items-center mt-20 p-12  ">
           <input
-            className="p-3  mb-6 mt-10  shadow-2xl rounded-md "
+            className="p-3  mb-6 mt-5  shadow-2xl rounded-md "
             type="email"
             placeholder="Enter Your Email"
             name="email"
@@ -50,8 +70,10 @@ const Login = () => {
             value="Login"
             className="bg-slate-500 p-3 mt-10 btn border-none w-32"
           />
-
-          <div className="mt-6">
+          <div className="text-center text-orange-400">
+            <p>{error}</p>
+          </div>
+          <div className="my-3">
             <p>
               <small>
                 if you have not an account please{" "}
@@ -64,7 +86,7 @@ const Login = () => {
           </div>
         </div>
       </form>
-      <div className="flex justify-center mt-[-15px]">
+      <div className="flex justify-center mt-[-45px]">
         <button
           onClick={handleGoogleLogin}
           className="bg-slate-500 text-white flex items-center font-semibold rounded-lg  p-3"
