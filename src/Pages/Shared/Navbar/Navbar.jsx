@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { MdToys } from "react-icons/all";
 
 const Navbar = () => {
-  const [isOpen, setIsOpen]=useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   return (
     <div>
       <nav className="bg-gray-800">
@@ -13,67 +13,65 @@ const Navbar = () => {
             <div className="flex items-center">
               <div className="flex-shrink-0 mr-16">
                 <div className="flex items-center">
-                <div className="text-orange-600 text-5xl ">
+                  <div className="text-orange-600 text-5xl ">
                     <MdToys></MdToys>
                   </div>
                   <div>
-                    <h2 className="text-white ml-5 font-serif font-semibold">BD-Toy<span className="text-orange-600 font-bold text-3xl">Mart</span></h2>
+                    <h2 className="text-white ml-5 font-serif font-semibold">
+                      BD-Toy
+                      <span className="text-orange-600 font-bold text-3xl">
+                        Mart
+                      </span>
+                    </h2>
                   </div>
-                  
                 </div>
-
-
               </div>
               <div className="hidden md:block">
                 <div className="flex items-center lg:space-x-60  justify-center">
+                  <div className="ml-10 flex items-baseline space-x-4">
+                    <Link
+                      to="/"
+                      className=" hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium"
+                    >
+                      Home
+                    </Link>
 
+                    <Link
+                      to="#"
+                      className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                    >
+                      All Toys
+                    </Link>
 
-                 <div className="ml-10 flex items-baseline space-x-4">
-                 <Link
-                    to="/"
-                    className=" hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium"
-                  >
-                    Home
-                  </Link>
+                    <Link
+                      to="#"
+                      className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                    >
+                      Add Toy
+                    </Link>
 
-                  <Link
-                    to="#"
-                    className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                  >
-                    All Toys
-                  </Link>
+                    <Link
+                      to="/blogs"
+                      className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                    >
+                      Blogs
+                    </Link>
 
-                  <Link
-                    to="#"
-                    className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                  >
-                    Add Toy
-                  </Link>
+                    <Link
+                      to="/login"
+                      className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                    >
+                      Login
+                    </Link>
+                  </div>
 
-                  <Link
-                    to="/blogs"
-                    className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                  >
-                  Blogs
-                  </Link>
-
-                  <Link
-                    to="/login"
-                    className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                  >
-                   Login
-                  </Link>
-
-                 </div>
-
-
-                  <div >
-                  <Link
-                    to="#"
-                    className="text-gray-300  hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                  >
-                   Profile
-                  </Link>
+                  <div>
+                    <Link
+                      to="#"
+                      className="text-gray-300  hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                    >
+                      Profile
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -141,7 +139,7 @@ const Navbar = () => {
                   to="/"
                   className="hover:bg-gray-700 text-white block px-3 py-2 rounded-md text-base font-medium"
                 >
-                 Home
+                  Home
                 </Link>
 
                 <Link
@@ -153,17 +151,17 @@ const Navbar = () => {
 
                 <Link
                   to="#"
-                  className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                  className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                 >
-                 Add Toy
+                  Add Toy
                 </Link>
 
                 <Link
-                    to="/blogs"
-                    className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                  >
+                  to="/blogs"
+                  className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                >
                   Blogs
-                  </Link>
+                </Link>
 
                 <Link
                   to="#"
@@ -171,14 +169,14 @@ const Navbar = () => {
                 >
                   Login
                 </Link>
-                <div >
+                <div>
                   <Link
                     to="#"
                     className="text-gray-300  hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                   >
-                   Profile
+                    Profile
                   </Link>
-                  </div>
+                </div>
               </div>
             </div>
           )}

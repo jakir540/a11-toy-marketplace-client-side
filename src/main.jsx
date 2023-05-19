@@ -15,6 +15,7 @@ import AuthProvider from './Provider/AuthProvider.jsx';
 import Login from './Pages/Login/Login.jsx';
 import Register from './Pages/Register/Register.jsx';
 import ViewDetailsCard from './Pages/ViewDetailsCard/ViewDetailsCard.jsx';
+import AddToy from './Pages/AddToy/AddToy.jsx';
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
       {
         path:'/register',
         element:<Register></Register>
+      },
+      {
+        path:'/addToy/:id',
+        element:<AddToy></AddToy>
       },
       {
         path:'/viewDetailsCard/:id',

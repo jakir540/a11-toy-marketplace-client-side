@@ -24,6 +24,10 @@ const Toy = ({ toy }) => {
             
             <button className="btn btn-outline">View Details</button>
           </Link>
+          <Link to={`/addToy/${_id}`}>
+            
+            <button className="btn bg-orange-700 ">Add Toy</button>
+          </Link>
         </div>
       </div>
     </div>
