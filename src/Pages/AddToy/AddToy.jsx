@@ -9,13 +9,34 @@ const AddToy = () => {
 
     const name = form.name.value;
     const email = form.email.value;
-  
+
     const photo = form.photo.value;
     const rating = form.rating.value;
     const price = form.price.value;
     const quantity = form.quantity.value;
     const description = form.description.value;
-    console.log(name, email, photo,rating,price,quantity,description);
+    const insertBody = {
+      name,
+      email,
+      photo,
+      rating,
+      price,
+      quantity,
+      description,
+    };
+    console.log(name, email, photo, rating, price, quantity, description);
+
+    fetch("http://localhost:5000/addToy", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(insertBody),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
   };
   return (
     <div>
@@ -25,93 +46,77 @@ const AddToy = () => {
       <div className=" w-[600px]  bg-slate-200 mx-auto h-[700px] my-16 rounded-lg shadow-2xl">
         <form onSubmit={handleRegistration}>
           <div className="flex flex-col items-center mt-16 p-12  ">
+            <div className="flex gap-8 mt-3">
+              <input
+                className="p-3  mb-6 mt-4  shadow-2xl rounded-md "
+                type="text"
+                name="name"
+                placeholder="Enter Your Name"
+              />
 
+              <input
+                className="p-3  mb-6 mt-4  shadow-2xl rounded-md "
+                type="text"
+                name="sellerName"
+                placeholder="Seller Name"
+              />
+            </div>
 
-           <div className="flex gap-8 mt-3">
-           <input
-              className="p-3  mb-6 mt-4  shadow-2xl rounded-md "
-              type="text"
-              name="name"
-              placeholder="Enter Your Name"
-            />
+            <div className="flex gap-8 mt-3">
+              <input
+                className="p-3  mb-6  shadow-2xl rounded-md "
+                type="email"
+                name="email"
+                placeholder="Seller Email"
+              />
 
-           <input
-              className="p-3  mb-6 mt-4  shadow-2xl rounded-md "
-              type="text"
-              name="sellerName"
-              placeholder="Seller Name"
-            />
-           </div>
+              <input
+                className="p-3  mb-6 shadow-2xl rounded-md "
+                type="text"
+                name="category"
+                defaultValue="category"
+              />
+            </div>
 
+            <div className="flex gap-8 mt-3">
+              <input
+                className="p-3  shadow-2xl rounded-md mb-6 "
+                type="text"
+                name="price"
+                defaultValue="price"
+              />
 
-           <div className="flex gap-8 mt-3">
-           <input
-              className="p-3  mb-6  shadow-2xl rounded-md "
-              type="email"
-              name="email"
-              placeholder="Seller Email"
-            />
+              <input
+                className="p-3  mb-6 shadow-2xl rounded-md "
+                type="text"
+                name="rating"
+                defaultValue="rating"
+              />
+            </div>
 
-           <input
-              className="p-3  mb-6 shadow-2xl rounded-md "
-              type="text"
-              name="category"
-             
-              defaultValue="category"
-            />
-           </div>
+            <div className="flex gap-8 mt-3">
+              <input
+                className="p-3  shadow-2xl rounded-md mb-6 "
+                type="text"
+                name="quantity"
+                defaultValue="10"
+              />
 
-           <div className="flex gap-8 mt-3">
-           <input
-              className="p-3  shadow-2xl rounded-md mb-6 "
-              type="text"
-              name="price"
-              defaultValue="price"
-            />
+              <input
+                className="p-3  mb-6 shadow-2xl rounded-md "
+                type="url"
+                name="photo"
+                defaultValue="URL"
+              />
+            </div>
 
-
-           <input
-              className="p-3  mb-6 shadow-2xl rounded-md "
-              type="text"
-              name="rating"
-             
-              defaultValue="rating"
-            />
-           </div>
-
-           <div className="flex gap-8 mt-3">
-           <input
-              className="p-3  shadow-2xl rounded-md mb-6 "
-              type="text"
-              name="quantity"
-              defaultValue="10"
-            />
-
-
-           <input
-              className="p-3  mb-6 shadow-2xl rounded-md "
-              type="url"
-              name="photo"
-             
-              defaultValue="URL"
-            />
-           </div>
-
-
-           <textarea 
+            <textarea
               className="p-3  mb-6 mt-5 shadow-2xl rounded-md "
               type="text"
               name="description"
-             
-             cols={40}
+              cols={40}
               defaultValue="description"
             />
-
-
-           
-
-          
-           
 
             <button
               // onClick={handleRegistration}
@@ -120,8 +125,6 @@ const AddToy = () => {
             >
               Add Confirm
             </button>
-
-            
           </div>
         </form>
       </div>

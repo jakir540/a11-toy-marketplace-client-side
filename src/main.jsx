@@ -16,6 +16,7 @@ import Login from './Pages/Login/Login.jsx';
 import Register from './Pages/Register/Register.jsx';
 import ViewDetailsCard from './Pages/ViewDetailsCard/ViewDetailsCard.jsx';
 import AddToy from './Pages/AddToy/AddToy.jsx';
+import BookingsAllToy from './Pages/BookingsAllToy/BookingsAllToy.jsx';
 
 const router = createBrowserRouter([
   {
@@ -42,6 +43,11 @@ const router = createBrowserRouter([
       {
         path:'/addToy/:id',
         element:<AddToy></AddToy>
+      },
+      {
+        path:'/allToys',
+        element:<BookingsAllToy></BookingsAllToy>
+
       },
       {
         path:'/viewDetailsCard/:id',
