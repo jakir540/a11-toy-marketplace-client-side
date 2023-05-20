@@ -1,15 +1,13 @@
 import React, { useEffect } from "react";
-import {FaRegStar,FaStar} from "react-icons/fa"
-
-
 import { useLoaderData } from "react-router-dom";
+import {FaRegStar,FaStar} from "react-icons/fa"
 import Rating from "react-rating";
 
 const ViewDetailsCard = () => {
   const viewDetailsData = useLoaderData();
 
-  console.log(viewDetailsData);
-  const {seller_name,picture_url,name,seller_email,quantity,description,rating} = viewDetailsData[0];
+  // console.log(viewDetailsData);
+  // const {seller_name,picture_url,name,seller_email,quantity,description,rating} = viewDetailsData[0];
 
   return (
     <div>
@@ -17,7 +15,7 @@ const ViewDetailsCard = () => {
 
       <div>
         <div className="hero min-h-screen bg-base-200">
-          <div className="hero-content flex-col lg:flex-row-reverse">
+          {/* <div className="hero-content flex-col lg:flex-row-reverse">
             <img
               src="https://5.imimg.com/data5/PF/PG/MY-55849933/kids-racing-car-toys-1000x1000.jpg"
             //   src={picture_url}
@@ -59,7 +57,7 @@ const ViewDetailsCard = () => {
 
               <button className="btn bg-orange-700 border-none text-black">BUY NOW</button>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

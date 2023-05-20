@@ -16,34 +16,34 @@ const BookingsAllToy = () => {
   }, []);
 
 
-const handleDelete =(id) =>{
-  fetch(`http://localhost:5000/bookingsToys/${id}`,{
-    method:"DELETE"
-  })
-  .then(res => res.json())
-  .then(data => {
-    console.log(data);
-    if (data.deletedCount > 0) {
-      alert('deleted successfully')
-      const remaining = allToys.filter (toy => toy._id !== id);
-      setAllToys(remaining); 
-    }
-  })
-}
+// const handleDelete =(id) =>{
+//   fetch(`http://localhost:5000/bookingsToys/${id}`,{
+//     method:"DELETE"
+//   })
+//   .then(res => res.json())
+//   .then(data => {
+//     console.log(data);
+//     if (data.deletedCount > 0) {
+//       alert('deleted successfully')
+//       const remaining = allToys.filter (toy => toy._id !== id);
+//       setAllToys(remaining); 
+//     }
+//   })
+// }
 
-const updatedToy = (toy) =>{
-  fetch(`http://localhost:5000/bookingToys/${toy._id}`,{
-    method:"PUT",
-    headers:{
-      "content-type": "application/json"
-    },
-    body:JSON.stringify(toy)
-  })
-  .then(res => res.json())
-  .then(error =>{
-    console.log(error);
-  })
-}
+// const updatedToy = (toy) =>{
+//   fetch(`http://localhost:5000/bookingToys/${toy._id}`,{
+//     method:"PUT",
+//     headers:{
+//       "content-type": "application/json"
+//     },
+//     body:JSON.stringify(toy)
+//   })
+//   .then(res => res.json())
+//   .then(error =>{
+//     console.log(error);
+//   })
+// }
 
 
 
@@ -94,7 +94,7 @@ const updatedToy = (toy) =>{
                 <th>Availabel Quantity</th>
                 <th>Sub-Category</th>
                 <th></th>
-                <th></th>
+               
               </tr>
             </thead>
             <tbody>
@@ -102,9 +102,7 @@ const updatedToy = (toy) =>{
               {allToys.map((toy) => (
                 <SingleRow key={toy._id} 
                 
-                toy={toy}
-                handleDelete ={handleDelete}
-                updatedToy={updatedToy}
+                toy={toy}                           
                 
                 ></SingleRow>
               ))}

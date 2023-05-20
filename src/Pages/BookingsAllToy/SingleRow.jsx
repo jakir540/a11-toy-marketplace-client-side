@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const SingleRow = ({ toy,handleDelete,updatedToy }) => {
+const SingleRow = ({ toy }) => {
   console.log(toy);
   const {
     _id,
@@ -38,11 +38,12 @@ const SingleRow = ({ toy,handleDelete,updatedToy }) => {
       <td>{quantity}</td>
       <td>{category}</td>
       
-      <th>
-        <Link to="/updateToy"><button onClick={updatedToy} className="btn btn-sm">Update</button></Link>
-      </th>
-      <th>
+      
+      {/* <th>
         <button onClick={()=> handleDelete(_id)} className="btn btn-sm">Delete</button>
+      </th> */}
+      <th>
+        <Link to={`/viewDetailsCard/${_id}`}><button className="btn btn-sm">Details</button></Link>
       </th>
     </tr>
   );
