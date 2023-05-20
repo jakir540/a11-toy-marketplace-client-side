@@ -8,7 +8,7 @@ const CustomerReview = () => {
       <h2 className="text-center text-orange-600 font-bold text-5xl my-10">
         Customer Review
       </h2>
-      <div className="grid grid-cols-2 gap-16">
+      <div className="grid lg:grid-cols-2  gap-16">
 
 
         <div className="hero h-[500px] bg-base-200 shadow-2xl">

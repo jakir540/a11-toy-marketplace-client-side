@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import SingleRow from "./SingleRow";
+import useTitle from "../../hooks/useTitle";
 
 const BookingsAllToy = () => {
   const [allToys, setAllToys] = useState([]);
   const [user,setUser] = useState(null)
   const [searchText,setSearchText] = useState("")
+  useTitle("all toys")
 
   useEffect(() => {
     fetch("http://localhost:5000/getToy")

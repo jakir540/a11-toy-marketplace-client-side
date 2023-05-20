@@ -5,7 +5,7 @@ import "react-tabs/style/react-tabs.css";
 
 const AllToys = () => {
   const [toys, setToys] = useState([]);
-  const [activeTab, setActiveTab] = useState("allToys");
+  const [activeTab, setActiveTab] = useState("");
 
   useEffect(() => {
     fetch(`http://localhost:5000/searceToyByName/${activeTab}`)
@@ -20,7 +20,7 @@ const AllToys = () => {
     fetch("http://localhost:5000/toys")
       .then((res) => res.json())
       .then((data) => {
-        // console.log(data)
+        console.log(data)
         setToys(data);
       });
   }, []);
@@ -43,21 +43,21 @@ const AllToys = () => {
         <Tabs>
           <TabList>
             <Tab
-              onClick={() => handleTabClick("BusToys")}
+              onClick={() => handleTabClick("bus")}
               className="btn text-center font-semibold mx-3 bg-orange-900 border-none "
             >
               {" "}
               Buses
             </Tab>
             <Tab
-              onClick={() => handleTabClick("BikeToys")}
+              onClick={() => handleTabClick("Bikes")}
               className="btn text-center font-semibold mx-3 bg-orange-900 border-none "
             >
               {" "}
               Bikes
             </Tab>
             <Tab
-              onClick={() => handleTabClick("TruckToys")}
+              onClick={() => handleTabClick("Truck")}
               className="btn text-center font-semibold mx-3 bg-orange-900 border-none "
             >
               {" "}

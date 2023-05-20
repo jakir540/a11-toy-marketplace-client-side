@@ -4,8 +4,10 @@ import Toys from "../AllToys/AllToys";
 import AllToys from "../AllToys/AllToys";
 import Advertisement from "../Advertisement/Advertisement";
 import CustomerReview from "../CustomerReview/CustomerReview";
+import useTitle from "../../../hooks/useTitle";
 
 const Home = () => {
+  useTitle('home')
   return (
     <main>
       <div className=" w-full mb-16">

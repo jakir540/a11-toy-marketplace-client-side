@@ -17,6 +17,7 @@ const AddToy = () => {
     const quantity = form.quantity.value;
     const description = form.description.value;
     const category = form.category.value;
+    form.reset()
     const insertBody = {
       name,
       email,
@@ -91,9 +92,10 @@ const AddToy = () => {
             <div className="flex gap-8 mt-3">
               <input
                 className="p-3  shadow-2xl rounded-md mb-6 "
-                type="text"
+                type="number"
                 name="price"
-                defaultValue="price"
+                placeholder="price"
+                
               />
 
               <input

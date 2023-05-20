@@ -8,8 +8,8 @@ const Toy = ({ toy }) => {
     <div className="card w-96 bg-base-100 shadow-xl">
       <figure>
         <img
-          // src={picture_url}
-          src="https://5.imimg.com/data5/PF/PG/MY-55849933/kids-racing-car-toys-1000x1000.jpg"
+          src={picture_url}
+         
           alt="toys"
         />
       </figure>

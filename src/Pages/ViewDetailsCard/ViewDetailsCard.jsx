@@ -1,24 +1,46 @@
-import React, { useEffect } from "react";
-import { useLoaderData } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
+import { useLoaderData, useParams } from "react-router-dom";
 import {FaRegStar,FaStar} from "react-icons/fa"
 import Rating from "react-rating";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const ViewDetailsCard = () => {
-  const viewDetailsData = useLoaderData();
+  const {user} = useContext(AuthContext)
+const [singletoy , setSingleToy] = useState({})
+  const [control ,setControl] = useState(false)
+  const {id} = useParams();
+  console.log(id);
+  console.log(typeof(id));
+  
 
-  console.log(viewDetailsData);
-  const {seller_name,picture_url,name,seller_email,quantity,description,rating} = viewDetailsData[0];
+  
+useEffect(()=>{
+  fetch(`http://localhost:5000/viewDetailsCard/${id}`)
+  .then(res => res.json())
+  .then(data => {
+    console.log(data)
+    setSingleToy(data)
+    
+  } )
+},[user])
+
+
+
+  const {seller_name,picture_url,name,seller_email,quantity,description,rating} = singletoy;
+  console.log({singletoy});
 
   return (
+  
     <div>
+      
       <h2 className="text-center font-bold my-10 uppercase p-3 text-6xl underline text-orange-500">Toy Description</h2>
 
       <div>
         <div className="hero min-h-screen bg-base-200">
           <div className="hero-content flex-col lg:flex-row-reverse">
             <img
-              src="https://5.imimg.com/data5/PF/PG/MY-55849933/kids-racing-car-toys-1000x1000.jpg"
-            //   src={picture_url}
+              
+              src={picture_url}
               className="max-w-md rounded-lg shadow-2xl"
             />
             <div className="font-serif">
@@ -45,15 +67,6 @@ const ViewDetailsCard = () => {
             </Rating>
            </div>
         </div>
-
-
-            
-
-
-
-
-
-
 
               <button className="btn bg-orange-700 border-none text-black">BUY NOW</button>
             </div>

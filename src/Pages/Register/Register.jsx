@@ -3,11 +3,13 @@ import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { updateProfile } from "firebase/auth";
+import useTitle from "../../hooks/useTitle";
 
 const Register = () => {
   const { createAuthUser } = useContext(AuthContext);
   const [user,setUser] = useState(null)
   const [error,setError] = useState("")
+  useTitle("register")
 
   const handleRegistration = (event) => {
     setError("")
@@ -40,6 +42,22 @@ const Register = () => {
         });
       })
       .catch((error) => setError(error.message));
+
+      useEffect(() => {
+        fetch("http://localhost:5000/toys")
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data)
+            setToys(data);
+          });
+      }, []);
+
+
+
+
+
+
+
   };
 
   return (

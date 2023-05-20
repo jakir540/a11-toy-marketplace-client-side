@@ -73,8 +73,7 @@ const router = createBrowserRouter([
             <ViewDetailsCard></ViewDetailsCard>
           </PrivateRoute>
         ),
-        loader: ({ params }) =>
-          fetch(`http://localhost:5000/viewDetailsCard/${params.id}`),
+        
       },
     ],
   },

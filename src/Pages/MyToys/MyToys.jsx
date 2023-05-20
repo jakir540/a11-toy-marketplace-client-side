@@ -1,12 +1,14 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import MyToysTable from "./MyToysTable";
+import useTitle from "../../hooks/useTitle";
 
 const MyToys = () => {
   const [toys, setToys] = useState([]);
   const [control, setControl] = useState(false);
   const [loading, setLoading] = useState(false);
   const { user } = useContext(AuthContext);
+  useTitle("my-toys")
   console.log(user.displayName);
 
   useEffect(() => {
