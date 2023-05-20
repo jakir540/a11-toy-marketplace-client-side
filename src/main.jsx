@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App.jsx";
+
 import "./index.css";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -16,7 +16,8 @@ import AddToy from "./Pages/AddToy/AddToy.jsx";
 import BookingsAllToy from "./Pages/BookingsAllToy/BookingsAllToy.jsx";
 import PrivateRoute from "./Routes/PrivateRoute.jsx";
 import UpdateToy from "./Pages/UpdateToy/UpdateToy.jsx";
-import ToyDetails from "./Pages/ToyDetails'/ToyDetails.jsx";
+import MyToys from "./Pages/MyToys/MyToys";
+
 
 const router = createBrowserRouter([
   {
@@ -52,13 +53,11 @@ const router = createBrowserRouter([
         path:"/updateToy",
         element:<UpdateToy></UpdateToy>
 
-      },
+      },  
       {
-        path:'/toyDetails/:id',
-        element:<ToyDetails></ToyDetails>,
-        
-
-      },
+        path:'myToys',
+        element:<MyToys></MyToys>
+      },  
       {
         path: "/allToys",
         element: (

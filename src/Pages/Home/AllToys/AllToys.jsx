@@ -69,7 +69,7 @@ const AllToys = () => {
 
       <div className=" max-w-7xl grid lg:grid-cols-3 mx-auto gap-4 my-16">
         {toys.map((toy) => (
-          <Toy key={toy._id} toy={toy}></Toy>
+          <Toy key={toy._id} toy={toy} ></Toy>
         ))}
       </div>
     </div>

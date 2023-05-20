@@ -1,21 +1,20 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-const SingleRow = ({ toy }) => {
- 
-  const {
-    _id,
-    seller_name,
-    picture_url,
-    name,
-    seller_email,
-    quantity,
-    description,
-    price,
-  category
-  } = toy;
-  return (
-    <tr>
+const MyToysTable = ({toy,handleDelete}) => {
+    const {
+        _id,
+        seller_name,
+        picture_url,
+        name,
+        seller_email,
+        quantity,
+        description,
+        price,
+      category
+      } = toy;
+    return (
+        <tr>
       <td>
         <div className="flex items-center space-x-3">
           <div className="avatar">
@@ -43,10 +42,13 @@ const SingleRow = ({ toy }) => {
         <button onClick={()=> handleDelete(_id)} className="btn btn-sm">Delete</button>
       </th> */}
       <th>
-        <Link to={`/viewDetailsCard/${_id}`}><button className="btn btn-sm">Details</button></Link>
+        <Link to=""><button  className="btn btn-sm">Update</button></Link>
+      </th>
+      <th>
+        <Link to=""><button onClick={()=> handleDelete(_id)} className="btn btn-sm">Delete</button></Link>
       </th>
     </tr>
-  );
+    );
 };
 
-export default SingleRow;
+export default MyToysTable;

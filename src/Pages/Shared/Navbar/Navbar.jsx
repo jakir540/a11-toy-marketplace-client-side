@@ -65,6 +65,14 @@ const Navbar = () => {
                         Add Toy
                       </Link>
                     )}
+                    {user && (
+                      <Link
+                        to="/myToys"
+                        className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                      >
+                       My Toys
+                      </Link>
+                    )}
 
                     <Link
                       to="/blogs"
@@ -186,6 +194,15 @@ const Navbar = () => {
                 >
                   Add Toy
                 </Link>
+
+                {user && (
+                      <Link
+                        to="/myToys"
+                        className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                      >
+                       My Toys
+                      </Link>
+                    )}
 
                 <Link
                   to="/blogs"

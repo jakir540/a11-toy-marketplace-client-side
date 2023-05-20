@@ -4,32 +4,30 @@ import SingleRow from "./SingleRow";
 const BookingsAllToy = () => {
   const [allToys, setAllToys] = useState([]);
   const [user,setUser] = useState(null)
-  const [control,setControl] = useState(false)
+  const [searchText,setSearchText] = useState("")
 
   useEffect(() => {
     fetch("http://localhost:5000/getToy")
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+       
         setAllToys(data);
       });
   }, []);
 
+const handleSearce =()=>{
 
-// const handleDelete =(id) =>{
-//   fetch(`http://localhost:5000/bookingsToys/${id}`,{
-//     method:"DELETE"
-//   })
-//   .then(res => res.json())
-//   .then(data => {
-//     console.log(data);
-//     if (data.deletedCount > 0) {
-//       alert('deleted successfully')
-//       const remaining = allToys.filter (toy => toy._id !== id);
-//       setAllToys(remaining); 
-//     }
-//   })
-// }
+  fetch(`http://localhost:5000/toySearceByName/${searchText}`)
+  .then(res => res.json())
+  .then(data => {
+   
+    setAllToys(data)
+  })
+ 
+
+}
+    
+
 
 // const updatedToy = (toy) =>{
 //   fetch(`http://localhost:5000/bookingToys/${toy._id}`,{
@@ -57,13 +55,14 @@ const BookingsAllToy = () => {
         </h1>
 
         <div className=" w-[400px]  mx-auto h-[100px] ">
-          <form>
+         
             <div className="flex flex-col items-center my-3  ">
               <div className="flex gap-4">
 
                 <input
                   className="p-3   shadow-2xl rounded-md border border-orange-500 "
                   type="text"
+                  onChange={(e) => setSearchText(e.target.value)}
                   name="name"
                   placeholder="Enter Toy Name"
                 />
@@ -71,6 +70,7 @@ const BookingsAllToy = () => {
 
                 <button                  
                   type="submit"
+                onClick={handleSearce}
                   className="bg-slate-500 p-3 btn border-none w-32"
                 >
                   searce toy
@@ -79,7 +79,7 @@ const BookingsAllToy = () => {
 
               </div>
             </div>
-          </form>
+        
         </div>
       </div>
 

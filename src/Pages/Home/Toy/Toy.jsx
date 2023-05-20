@@ -20,12 +20,16 @@ const Toy = ({ toy }) => {
         </h2>
         <p>Price: {price}</p>
         <div className="card-actions justify-end">
+
+
           <Link to={`/viewDetailsCard/${_id}`}>
             
             <button className="btn btn-outline">View Details</button>
           </Link>
-          <Link to={`/addToy/${_id}`}>
-            
+
+
+
+          <Link to={`/addToy/${_id}`}>            
             <button className="btn bg-orange-700 ">Add Toy</button>
           </Link>
         </div>
