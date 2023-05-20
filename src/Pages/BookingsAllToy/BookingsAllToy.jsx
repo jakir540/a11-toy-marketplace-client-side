@@ -3,6 +3,8 @@ import SingleRow from "./SingleRow";
 
 const BookingsAllToy = () => {
   const [allToys, setAllToys] = useState([]);
+  const [user,setUser] = useState(null)
+  const [control,setControl] = useState(false)
 
   useEffect(() => {
     fetch("http://localhost:5000/getToy")
@@ -12,6 +14,41 @@ const BookingsAllToy = () => {
         setAllToys(data);
       });
   }, []);
+
+
+const handleDelete =(id) =>{
+  fetch(`http://localhost:5000/bookingsToys/${id}`,{
+    method:"DELETE"
+  })
+  .then(res => res.json())
+  .then(data => {
+    console.log(data);
+    if (data.deletedCount > 0) {
+      alert('deleted successfully')
+      const remaining = allToys.filter (toy => toy._id !== id);
+      setAllToys(remaining); 
+    }
+  })
+}
+
+const updatedToy = (toy) =>{
+  fetch(`http://localhost:5000/bookingToys/${toy._id}`,{
+    method:"PUT",
+    headers:{
+      "content-type": "application/json"
+    },
+    body:JSON.stringify(toy)
+  })
+  .then(res => res.json())
+  .then(error =>{
+    console.log(error);
+  })
+}
+
+
+
+
+
   return (
     <div className="mt-5">
       <div className="flex justify-center flex-col gap-4">
@@ -63,7 +100,13 @@ const BookingsAllToy = () => {
             <tbody>
               {/* row */}
               {allToys.map((toy) => (
-                <SingleRow key={toy._id} toy={toy}></SingleRow>
+                <SingleRow key={toy._id} 
+                
+                toy={toy}
+                handleDelete ={handleDelete}
+                updatedToy={updatedToy}
+                
+                ></SingleRow>
               ))}
             </tbody>
           </table>

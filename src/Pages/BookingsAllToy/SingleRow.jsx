@@ -1,8 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-const SingleRow = ({ toy }) => {
+const SingleRow = ({ toy,handleDelete,updatedToy }) => {
   console.log(toy);
   const {
+    _id,
     seller_name,
     picture_url,
     name,
@@ -37,10 +39,10 @@ const SingleRow = ({ toy }) => {
       <td>{category}</td>
       
       <th>
-        <button className="btn btn-sm">View Details</button>
+        <Link to="/updateToy"><button onClick={updatedToy} className="btn btn-sm">Update</button></Link>
       </th>
       <th>
-        <button className="btn btn-sm">Delete</button>
+        <button onClick={()=> handleDelete(_id)} className="btn btn-sm">Delete</button>
       </th>
     </tr>
   );

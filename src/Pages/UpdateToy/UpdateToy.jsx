@@ -1,60 +1,44 @@
-import React from "react";
-import { MdInput } from "react-icons/md";
-import { Link } from "react-router-dom";
-import Swal from "sweetalert2";
+import React from 'react';
 
-const AddToy = () => {
-  const handleRegistration = (event) => {
-    event.preventDefault();
-    const form = event.target;
+const UpdateToy = () => {
+    const handleUpdate = (event) => {
+        event.preventDefault();
+        const form = event.target;
+    
+        const name = form.name.value;
+        const email = form.email.value;
+    
+        const photo = form.photo.value;
+        const rating = form.rating.value;
+        const price = form.price.value;
+        const quantity = form.quantity.value;
+        const description = form.description.value;
+        const category = form.category.value;
+        const insertBody = {
+          name,
+          email,
+          photo,
+          rating,
+          price,
+          category,
+          quantity,
+          description,
+        };
+        console.log(name, email, photo, rating, price, quantity, description);
+    
+       
+          
+      };
 
-    const name = form.name.value;
-    const email = form.email.value;
 
-    const photo = form.photo.value;
-    const rating = form.rating.value;
-    const price = form.price.value;
-    const quantity = form.quantity.value;
-    const description = form.description.value;
-    const category = form.category.value;
-    const insertBody = {
-      name,
-      email,
-      photo,
-      rating,
-      price,
-      category,
-      quantity,
-      description,
-    };
-    console.log(name, email, photo, rating, price, quantity, description);
 
-    fetch("http://localhost:5000/addToy", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(insertBody),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        Swal.fire({
-          position: "top-end",
-          icon: "success",
-          title: "Add Successfully",
-          showConfirmButton: false,
-          timer: 2000,
-        });
-        console.log(data);
-      });
-  };
-  return (
-    <div>
+    return (
+        <div>
       <h1 className="text-center text-4xl text-orange-500 text-bold mt-10">
         Add A Toy
       </h1>
       <div className=" w-[600px]  bg-slate-200 mx-auto h-[700px] my-16 rounded-lg shadow-2xl">
-        <form onSubmit={handleRegistration}>
+        <form onSubmit={handleUpdate}>
           <div className="flex flex-col items-center mt-16 p-12  ">
             <div className="flex gap-8 mt-3">
               <input
@@ -133,13 +117,13 @@ const AddToy = () => {
               type="submit"
               className="bg-slate-500 p-3 mt-10 btn border-none w-32"
             >
-              Add Confirm
+              Update
             </button>
           </div>
         </form>
       </div>
     </div>
-  );
+    );
 };
 
-export default AddToy;
+export default UpdateToy;

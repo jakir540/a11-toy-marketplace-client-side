@@ -2,7 +2,8 @@ import React from "react";
 import Gallery from "../Gallery/Gallery";
 import Toys from "../AllToys/AllToys";
 import AllToys from "../AllToys/AllToys";
-import Advertisement from "../CustomerReview/Advertisement";
+import Advertisement from "../Advertisement/Advertisement";
+import CustomerReview from "../CustomerReview/CustomerReview";
 
 const Home = () => {
   return (
@@ -14,13 +15,29 @@ const Home = () => {
             className="w-full h-[600px] object-contain"
           />
         </div>
-        <div className="w-48 bg-gray-300  text-white h-48  absolute top-[250px] right-32  "></div>
-        <div className="w-60  bg-gray-800 p-2 font-semibold  text-white h-48  absolute top-[300px] right-40 text-center  ">
-          <h2 className="font-serif text-5xl">
-            REMOTE <br /> CAR
-          </h2>
-          <p></p>
-          <button>visite more</button>
+        <div>
+          <div className="w-80  border-gray-600 border-8  h-60 bg-transparent shadow-2xl  absolute top-[165px] right-64  "></div>
+          <div className="w-80  bg-gray-800 px-10  font-semibold  text-white h-60  absolute top-[200px] right-72 text-center  ">
+            <h2 className="font-serif mt-5 text-5xl">
+            <span className="text-orange-500">REMOTE</span> <br /> CAR
+            </h2>
+            <p></p>
+            <button className="btn my-2 border-none bg-orange-800">
+              visite more
+            </button>
+          </div>
+        </div>
+        <div>
+          <div className="w-80  border-gray-600 border-8  h-60 bg-transparent shadow-2xl  absolute top-[500px] right-20  "></div>
+          <div className="w-80  bg-gray-800 px-10  font-semibold  text-white h-60  absolute top-[550px] right-10 text-center  ">
+            <h2 className="font-serif mt-5 text-5xl">
+              <span className="text-orange-500">RACING</span> <br /> CAR
+            </h2>
+            <p></p>
+            <button className="btn my-2 border-none bg-orange-800">
+              visite more
+            </button>
+          </div>
         </div>
       </div>
       {/* gallery seciton */}
@@ -31,10 +48,10 @@ const Home = () => {
           </h2>
         </div>
         <Gallery></Gallery>
-      <AllToys></AllToys>
-      <Advertisement></Advertisement>
+        <AllToys></AllToys>
+        <CustomerReview></CustomerReview>
+        <Advertisement></Advertisement>
       </section>
-      
     </main>
   );
 };

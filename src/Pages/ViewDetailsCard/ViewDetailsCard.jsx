@@ -8,7 +8,7 @@ import Rating from "react-rating";
 const ViewDetailsCard = () => {
   const viewDetailsData = useLoaderData();
 
-  console.log(viewDetailsData[0]);
+  console.log(viewDetailsData);
   const {seller_name,picture_url,name,seller_email,quantity,description,rating} = viewDetailsData[0];
 
   return (
