@@ -31,20 +31,6 @@ const handleSearce =()=>{
     
 
 
-// const updatedToy = (toy) =>{
-//   fetch(`http://localhost:5000/bookingToys/${toy._id}`,{
-//     method:"PUT",
-//     headers:{
-//       "content-type": "application/json"
-//     },
-//     body:JSON.stringify(toy)
-//   })
-//   .then(res => res.json())
-//   .then(error =>{
-//     console.log(error);
-//   })
-// }
-
 
 
 

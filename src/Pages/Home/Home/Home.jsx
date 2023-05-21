@@ -1,7 +1,7 @@
 import React from "react";
 import Gallery from "../Gallery/Gallery";
-import Toys from "../AllToys/AllToys";
-import AllToys from "../AllToys/AllToys";
+import Toys from "../Category/Category";
+import Category from "../Category/Category";
 import Advertisement from "../Advertisement/Advertisement";
 import CustomerReview from "../CustomerReview/CustomerReview";
 import useTitle from "../../../hooks/useTitle";
@@ -18,8 +18,8 @@ const Home = () => {
           />
         </div>
         <div>
-          <div className="w-80  border-gray-600 border-8  h-60 bg-transparent shadow-2xl  absolute lg:top-[165px] top-[620px] right-16 lg:right-64  "></div>
-          <div className="w-80  bg-gray-800 px-10  font-semibold  text-white h-60  absolute lg:top-[200px] lg:right-72 text-center  ">
+          <div className="w-80  border-gray-600 border-8  h-60 bg-transparent shadow-2xl  absolute lg:top-[95px] top-[650px] right-0 lg:right-64  "></div>
+          <div className="w-80  bg-gray-800 px-10  font-semibold  text-white h-60  absolute lg:top-[130px] lg:right-72 right-10 text-center  ">
             <h2 className="font-serif mt-5 text-5xl">
             <span className="text-orange-500">REMOTE</span> <br /> CAR
             </h2>
@@ -30,8 +30,8 @@ const Home = () => {
           </div>
         </div>
         <div>
-          <div className="w-80  border-gray-600 border-8  h-60 bg-transparent shadow-2xl  absolute lg:top-[500px] top-[900px] lg:right-20 right-0  "></div>
-          <div className="w-80  bg-gray-800 px-10  font-semibold  text-white h-60  absolute lg:top-[550px] top-[930px] right-30 lg:right-10 text-center  ">
+          <div className="w-80  border-gray-600 border-8  h-60 bg-transparent shadow-2xl  absolute lg:top-[390px] top-[950px] lg:right-20 right-0  "></div>
+          <div className="w-80  bg-gray-800 px-10  font-semibold  text-white h-60  absolute lg:top-[430px] top-[930px] right-10 lg:right-10 text-center  ">
             <h2 className="font-serif mt-5 text-5xl">
               <span className="text-orange-500">RACING</span> <br /> CAR
             </h2>
@@ -50,7 +50,7 @@ const Home = () => {
           </h2>
         </div>
         <Gallery></Gallery>
-        <AllToys></AllToys>
+        <Category></Category>
         <CustomerReview></CustomerReview>
         <Advertisement></Advertisement>
       </section>

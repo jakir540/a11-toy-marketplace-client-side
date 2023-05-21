@@ -9,8 +9,8 @@ const ViewDetailsCard = () => {
 const [singletoy , setSingleToy] = useState({})
   const [control ,setControl] = useState(false)
   const {id} = useParams();
-  console.log(id);
-  console.log(typeof(id));
+ 
+
   
 
   

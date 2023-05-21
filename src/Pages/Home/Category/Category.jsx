@@ -3,7 +3,7 @@ import Toy from "../Toy/Toy";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 
-const AllToys = () => {
+const Category = () => {
   const [toys, setToys] = useState([]);
   const [activeTab, setActiveTab] = useState("");
 
@@ -57,7 +57,7 @@ const AllToys = () => {
               Bikes
             </Tab>
             <Tab
-              onClick={() => handleTabClick("Truck")}
+              onClick={() => handleTabClick("Trucks")}
               className="btn text-center font-semibold mx-3 bg-orange-900 border-none "
             >
               {" "}
@@ -76,4 +76,4 @@ const AllToys = () => {
   );
 };
 
-export default AllToys;
+export default Category;

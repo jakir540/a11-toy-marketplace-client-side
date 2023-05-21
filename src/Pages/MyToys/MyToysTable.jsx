@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const MyToysTable = ({toy,handleDelete}) => {
+const MyToysTable = ({toy,handleDelete,handleUpdate}) => {
     const {
         _id,
         seller_name,
@@ -20,8 +20,8 @@ const MyToysTable = ({toy,handleDelete}) => {
           <div className="avatar">
             <div className="mask mask-squircle w-12 h-12">
               <img
-                // src={picture_url}
-                src="https://5.imimg.com/data5/PF/PG/MY-55849933/kids-racing-car-toys-1000x1000.jpg"
+                src={picture_url}
+                
                 alt="Avatar Tailwind CSS Component"
               />
             </div>
@@ -41,9 +41,9 @@ const MyToysTable = ({toy,handleDelete}) => {
       {/* <th>
         <button onClick={()=> handleDelete(_id)} className="btn btn-sm">Delete</button>
       </th> */}
-      <th>
-        <Link to=""><button  className="btn btn-sm">Update</button></Link>
-      </th>
+      {/* <th>
+        <Link to={`/updateToy/${_id}`}><button  className="btn btn-sm">Update</button></Link>
+      </th> */}
       <th>
         <Link to=""><button onClick={()=> handleDelete(_id)} className="btn btn-sm">Delete</button></Link>
       </th>

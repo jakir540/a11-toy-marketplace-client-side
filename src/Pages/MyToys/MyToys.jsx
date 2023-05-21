@@ -2,15 +2,16 @@ import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import MyToysTable from "./MyToysTable";
 import useTitle from "../../hooks/useTitle";
+import Swal from "sweetalert2";
 
 const MyToys = () => {
   const [toys, setToys] = useState([]);
-  const [control, setControl] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const { user } = useContext(AuthContext);
-  const [seartext,setSearcetext] =useState('')
-  useTitle("my-toys");
+//  const [asc,setAsc] = useState(true)
+//  const [search,setSearch] =useState('')
+ useTitle("my-toys");
+ const { user } = useContext(AuthContext);
   console.log(user.displayName);
+//   setSearch(user.displayName);
 
   useEffect(() => {
     fetch(`http://localhost:5000/myToys/${user?.displayName}`)
@@ -21,6 +22,15 @@ const MyToys = () => {
       });
   }, [user]);
 
+
+
+  // useEffect(()=>{
+  //   fetch(`http://localhost:5000/myToysSorting?search = ${search}&sort=${asc ? 'asc': 'desc'}`)
+  //   .then(res => res.json() )
+  //   .then(data => setToys(data))
+  // },[])
+
+  
   const handleDelete = (id) => {
     fetch(`http://localhost:5000/bookingsToys/${id}`, {
       method: "DELETE",
@@ -29,25 +39,45 @@ const MyToys = () => {
       .then((data) => {
         console.log(data);
         if (data.deletedCount > 0) {
-          alert("deleted successfully");
+          Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              Swal.fire(
+                'Deleted!',
+                'Your file has been deleted.',
+                'success'
+              )
+            }
+          })
           const remaining = toys.filter((toy) => toy._id !== id);
           setToys(remaining);
         }
       });
   };
 
-  const handleSelectChange =(e)=>{
-    setSearcetext(e.target.value)
-  }
-console.log(seartext);
+  // const handleSelectChange =(e)=>{
+  //   setSearch(e.target.value)
+  // }
+// console.log(search);
   return (
+
+  
     <div className="my-10">
       <h2 className="text-center text-4xl text-orange-500 font-bold my-5">
         Here all my Toys {toys.length}
       </h2>
 
       <div className=" max-w-7xl  mx-auto my-20">
-        <select onChange={handleSelectChange} className="select select-ghost w-full max-w-sm bg-slate-100">
+        <select
+        //  onChange={handleSelectChange} 
+         className="select select-ghost w-full max-w-sm bg-slate-100">
           <option disabled selected>
            Sorting 
           </option>
@@ -56,6 +86,22 @@ console.log(seartext);
           
         </select>
       </div>
+
+{/* 
+    <button className="btn bg-orange-950 text-white"
+    onClick={()=> setAsc(!asc)}
+    >
+      {
+        asc ? "price: ascending":"price: descending"
+      }
+    </button>
+ */}
+
+
+
+
+
+
 
 
 
@@ -73,8 +119,8 @@ console.log(seartext);
                 <th></th>
               </tr>
             </thead>
-            <tbody>
-              {/* row */}
+            { <tbody>
+              row
               {toys.map((toy) => (
                 <MyToysTable
                   key={toy._id}
@@ -82,7 +128,7 @@ console.log(seartext);
                   handleDelete={handleDelete}
                 ></MyToysTable>
               ))}
-            </tbody>
+            </tbody> }
           </table>
         </div>
       </div>
