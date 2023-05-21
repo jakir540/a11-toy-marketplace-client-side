@@ -16,7 +16,7 @@ const AddToy = () => {
     const price = form.price.value;
     const quantity = form.quantity.value;
     const description = form.description.value;
-    const category = form.category.value;
+    const subcategory = form.subcategory.value;
     form.reset()
     const insertBody = {
       name,
@@ -24,7 +24,7 @@ const AddToy = () => {
       photo,
       rating,
       price,
-      category,
+      subcategory,
       quantity,
       description,
     };
@@ -84,8 +84,8 @@ const AddToy = () => {
               <input
                 className="p-3  mb-6 shadow-2xl rounded-md "
                 type="text"
-                name="category"
-                defaultValue="category"
+                name="subcategory"
+                defaultValue="subcategory"
               />
             </div>
 

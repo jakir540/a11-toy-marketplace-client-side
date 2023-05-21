@@ -11,21 +11,15 @@ const MyToysTable = ({toy,handleDelete,handleUpdate}) => {
         quantity,
         description,
         price,
-      category
+        subcategory
       } = toy;
+
+     
     return (
         <tr>
       <td>
         <div className="flex items-center space-x-3">
-          <div className="avatar">
-            <div className="mask mask-squircle w-12 h-12">
-              <img
-                src={picture_url}
-                
-                alt="Avatar Tailwind CSS Component"
-              />
-            </div>
-          </div>
+          
 
           <div>
             <div className="font-bold">{seller_name}</div>
@@ -35,7 +29,7 @@ const MyToysTable = ({toy,handleDelete,handleUpdate}) => {
       </td>
       <td>{price}</td>
       <td>{quantity}</td>
-      <td>{category}</td>
+      <td>{subcategory}</td>
       
       
     

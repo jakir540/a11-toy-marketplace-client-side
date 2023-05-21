@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import SingleRow from "./SingleRow";
 import useTitle from "../../hooks/useTitle";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const BookingsAllToy = () => {
+  const {loading} = useContext(AuthContext)
   const [allToys, setAllToys] = useState([]);
   const [user,setUser] = useState(null)
   const [searchText,setSearchText] = useState("")
@@ -12,7 +14,13 @@ const BookingsAllToy = () => {
     fetch("http://localhost:5000/getToy")
       .then((res) => res.json())
       .then((data) => {
-       
+       if (loading) {
+        <progress
+        className="progress w-56"
+        value="100"
+        max="100"
+      ></progress>
+       }
         setAllToys(data);
       });
   }, []);

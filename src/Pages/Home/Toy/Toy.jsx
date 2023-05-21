@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Toy = ({ toy }) => {
   console.log(toy);
-  const { picture_url, price, rating, name, _id } = toy;
+  const { picture_url, price, rating, name, _id,subcategory } = toy;
   return (
     <div className="card w-96 bg-base-100 shadow-xl">
       <figure>
