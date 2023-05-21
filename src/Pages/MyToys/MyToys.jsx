@@ -6,7 +6,8 @@ import Swal from "sweetalert2";
 
 const MyToys = () => {
   const [toys, setToys] = useState([]);
-//  const [asc,setAsc] = useState(true)
+ const [asc,setAsc] = useState(true)
+ const {loading} = useContext(AuthContext)
 //  const [search,setSearch] =useState('')
  useTitle("my-toys");
  const { user } = useContext(AuthContext);
@@ -19,16 +20,19 @@ const MyToys = () => {
       .then((data) => {
         console.log(data);
         setToys(data);
+        if (loading) {
+        return  <progress className="progress w-56" value="100" max="100"></progress>
+        }
       });
   }, [user]);
 
 
 
-  // useEffect(()=>{
-  //   fetch(`http://localhost:5000/myToysSorting?search = ${search}&sort=${asc ? 'asc': 'desc'}`)
-  //   .then(res => res.json() )
-  //   .then(data => setToys(data))
-  // },[])
+  useEffect(()=>{
+    fetch(`http://localhost:5000/myToysSorting?sort=${asc ? 'asc': 'desc'}`)
+    .then(res => res.json() )
+    .then(data => setToys(data))
+  },[])
 
   
   const handleDelete = (id) => {
@@ -74,7 +78,7 @@ const MyToys = () => {
         Here all my Toys {toys.length}
       </h2>
 
-      <div className=" max-w-7xl  mx-auto my-20">
+      {/* <div className=" max-w-7xl  mx-auto my-20">
         <select
         //  onChange={handleSelectChange} 
          className="select select-ghost w-full max-w-sm bg-slate-100">
@@ -85,18 +89,18 @@ const MyToys = () => {
           <option value="Descending" className="my-5">Descending</option>
           
         </select>
-      </div>
+      </div> */}
 
-{/* 
-    <button className="btn bg-orange-950 text-white"
+
+   <div className="mx-auto"> <button className="btn bg-orange-950 text-white"
     onClick={()=> setAsc(!asc)}
     >
       {
         asc ? "price: ascending":"price: descending"
       }
     </button>
- */}
 
+</div>
 
 
 
@@ -120,7 +124,7 @@ const MyToys = () => {
               </tr>
             </thead>
             { <tbody>
-              row
+            
               {toys.map((toy) => (
                 <MyToysTable
                   key={toy._id}

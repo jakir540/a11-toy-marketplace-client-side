@@ -18,7 +18,6 @@ const BookingsAllToy = () => {
   }, []);
 
 const handleSearce =()=>{
-
   fetch(`http://localhost:5000/toySearceByName/${searchText}`)
   .then(res => res.json())
   .then(data => {
@@ -29,11 +28,6 @@ const handleSearce =()=>{
 
 }
     
-
-
-
-
-
 
   return (
     <div className="mt-5">

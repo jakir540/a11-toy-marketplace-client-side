@@ -38,12 +38,10 @@ const MyToysTable = ({toy,handleDelete,handleUpdate}) => {
       <td>{category}</td>
       
       
-      {/* <th>
-        <button onClick={()=> handleDelete(_id)} className="btn btn-sm">Delete</button>
-      </th> */}
-      {/* <th>
+    
+       <th>
         <Link to={`/updateToy/${_id}`}><button  className="btn btn-sm">Update</button></Link>
-      </th> */}
+      </th> 
       <th>
         <Link to=""><button onClick={()=> handleDelete(_id)} className="btn btn-sm">Delete</button></Link>
       </th>

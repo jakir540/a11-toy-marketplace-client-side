@@ -18,7 +18,7 @@ useEffect(()=>{
   fetch(`http://localhost:5000/viewDetailsCard/${id}`)
   .then(res => res.json())
   .then(data => {
-    console.log(data)
+    
     setSingleToy(data)
     
   } )
