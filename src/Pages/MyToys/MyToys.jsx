@@ -8,7 +8,8 @@ const MyToys = () => {
   const [control, setControl] = useState(false);
   const [loading, setLoading] = useState(false);
   const { user } = useContext(AuthContext);
-  useTitle("my-toys")
+  const [seartext,setSearcetext] =useState('')
+  useTitle("my-toys");
   console.log(user.displayName);
 
   useEffect(() => {
@@ -20,28 +21,43 @@ const MyToys = () => {
       });
   }, [user]);
 
-const handleDelete =(id) =>{
-  fetch(`http://localhost:5000/bookingsToys/${id}`,{
-    method:"DELETE"
-  })
-  .then(res => res.json())
-  .then(data => {
-    console.log(data);
-    if (data.deletedCount > 0) {
-      alert('deleted successfully')
-      const remaining = toys.filter (toy => toy._id !== id);
-      setToys(remaining); 
-    }
-  })
-}
+  const handleDelete = (id) => {
+    fetch(`http://localhost:5000/bookingsToys/${id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.deletedCount > 0) {
+          alert("deleted successfully");
+          const remaining = toys.filter((toy) => toy._id !== id);
+          setToys(remaining);
+        }
+      });
+  };
 
-
-
-
-
+  const handleSelectChange =(e)=>{
+    setSearcetext(e.target.value)
+  }
+console.log(seartext);
   return (
     <div className="my-10">
-      <h2 className="text-center text-4xl text-orange-500 font-bold my-5">Here all my Toys {toys.length}</h2>
+      <h2 className="text-center text-4xl text-orange-500 font-bold my-5">
+        Here all my Toys {toys.length}
+      </h2>
+
+      <div className=" max-w-7xl  mx-auto my-20">
+        <select onChange={handleSelectChange} className="select select-ghost w-full max-w-sm bg-slate-100">
+          <option disabled selected>
+           Sorting 
+          </option>
+          <option  value="Ascending">Ascending</option>
+          <option value="Descending" className="my-5">Descending</option>
+          
+        </select>
+      </div>
+
+
 
       <div className=" flex justify-center ">
         <div className=" max-w-7xl w-full ">
@@ -60,10 +76,10 @@ const handleDelete =(id) =>{
             <tbody>
               {/* row */}
               {toys.map((toy) => (
-                <MyToysTable key={toy._id} toy={toy}
-                
-                handleDelete ={handleDelete}
-                
+                <MyToysTable
+                  key={toy._id}
+                  toy={toy}
+                  handleDelete={handleDelete}
                 ></MyToysTable>
               ))}
             </tbody>

@@ -13,8 +13,8 @@ const Gallery = () => {
       <div class="-m-1 flex flex-wrap md:-m-2">
 
         
-        <div class="flex w-1/2 flex-wrap">
-          <div class="w-1/2 p-1 md:p-2" data-aos="fade-up">
+        <div class="lg:flex lg:w-1/2 flex-wrap">
+          <div class="lg:w-1/2 p-1 md:p-2" data-aos="fade-up">
             <img
               alt="gallery"
               class="block h-full w-full rounded-lg object-cover object-center"
@@ -23,7 +23,7 @@ const Gallery = () => {
               //https://images.unsplash.com/photo-1508896694512-1eade558679c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80
             />
           </div>
-          <div class="w-1/2 p-1 md:p-2" data-aos="fade-right">
+          <div class="lg:w-1/2 p-1 md:p-2" data-aos="fade-right">
             <img
               alt="gallery"
               class="block h-full w-full rounded-lg object-cover object-center"
@@ -43,7 +43,7 @@ const Gallery = () => {
         
 
 
-        <div class="flex w-1/2 flex-wrap">
+        <div class="lg:flex lg:w-1/2 flex-wrap">
 
 
           <div class="w-full p-1 md:p-2 " data-aos="fade-right">
@@ -55,7 +55,7 @@ const Gallery = () => {
           </div>
 
 
-          <div class="w-1/2 p-1 md:p-2"data-aos="fade-up">
+          <div class="lg:w-1/2 p-1 md:p-2"data-aos="fade-up">
             <img
               alt="gallery"
               class="block h-full w-full rounded-lg object-cover object-center"
@@ -64,7 +64,7 @@ const Gallery = () => {
           </div>
 
 
-          <div class="w-1/2 p-1 md:p-2"data-aos="fade-right">
+          <div class="lg:w-1/2 p-1 md:p-2"data-aos="fade-right">
             <img
               alt="gallery"
               class="block h-full w-full rounded-lg object-cover object-center"
@@ -76,15 +76,15 @@ const Gallery = () => {
         </div>
 
         
-        <div class="flex w-1/2 flex-wrap">
-          <div class="w-1/2 p-1 md:p-2"data-aos="fade-up">
+        <div class="lg:flex lg:w-1/2 flex-wrap">
+          <div class="lg:w-1/2 p-1 md:p-2"data-aos="fade-up">
             <img
               alt="gallery"
               class="block h-full w-full rounded-lg object-cover object-center"
               src="https://images.unsplash.com/photo-1610019080778-471083eb5965?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
             />
           </div>
-          <div class="w-1/2 p-1 md:p-2"data-aos="fade-right">
+          <div class="lg:w-1/2 p-1 md:p-2"data-aos="fade-right">
             <img
               alt="gallery"
               class="block h-full w-full rounded-lg object-cover object-center"
@@ -104,7 +104,7 @@ const Gallery = () => {
         
 
 
-        <div class="flex w-1/2 flex-wrap">
+        <div class="lg:flex lg:w-1/2 flex-wrap">
 
 
           <div class="w-full p-1 md:p-2"data-aos="fade-right">
@@ -116,7 +116,7 @@ const Gallery = () => {
           </div>
 
 
-          <div class="w-1/2 p-1 md:p-2"data-aos="fade-up">
+          <div class="lg:w-1/2 p-1 md:p-2"data-aos="fade-up">
             <img
               alt="gallery"
               class="block h-full w-full rounded-lg object-cover object-center"
@@ -125,7 +125,7 @@ const Gallery = () => {
           </div>
 
 
-          <div class="w-1/2 p-1 md:p-2"data-aos="fade-right">
+          <div class="lg:w-1/2 p-1 md:p-2"data-aos="fade-right">
             <img
               alt="gallery"
               class="block h-full w-full rounded-lg object-cover object-center"
