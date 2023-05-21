@@ -32,7 +32,7 @@ I follow the react router Documentation
 To deploy this project run with firebase
 and server side deploy Vercel
 
-### live site link: 
+### live site link: https://bd-toymart.web.app/
 ## Installation
 
 Install my-project with npm

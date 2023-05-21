@@ -11,7 +11,7 @@ const BookingsAllToy = () => {
   useTitle("all toys")
 
   useEffect(() => {
-    fetch("http://localhost:5000/getToy")
+    fetch("https://7-twelve-toymart-server.vercel.app/getToy")
       .then((res) => res.json())
       .then((data) => {
        if (loading) {
@@ -26,7 +26,7 @@ const BookingsAllToy = () => {
   }, []);
 
 const handleSearce =()=>{
-  fetch(`http://localhost:5000/toySearceByName/${searchText}`)
+  fetch(`https://7-twelve-toymart-server.vercel.app/toySearceByName/${searchText}`)
   .then(res => res.json())
   .then(data => {
    

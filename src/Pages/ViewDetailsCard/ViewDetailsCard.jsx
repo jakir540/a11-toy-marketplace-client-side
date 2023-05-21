@@ -11,7 +11,7 @@ const ViewDetailsCard = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    fetch(`http://localhost:5000/viewDetailsCard/${id}`)
+    fetch(`https://7-twelve-toymart-server.vercel.app/viewDetailsCard/${id}`)
       .then((res) => res.json())
       .then((data) => {
         if (loading) {

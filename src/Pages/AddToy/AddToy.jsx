@@ -30,7 +30,7 @@ const AddToy = () => {
     };
     console.log(name, email, photo, rating, price, quantity, description);
 
-    fetch("http://localhost:5000/addToy", {
+    fetch("https://7-twelve-toymart-server.vercel.app/addToy", {
       method: "POST",
       headers: {
         "content-type": "application/json",

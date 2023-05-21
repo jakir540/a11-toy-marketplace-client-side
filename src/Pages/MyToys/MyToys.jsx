@@ -15,7 +15,7 @@ const MyToys = () => {
   //   setSearch(user.displayName);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/myToys/${user?.displayName}`)
+    fetch(`https://7-twelve-toymart-server.vercel.app/myToys/${user?.displayName}`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -33,14 +33,14 @@ const MyToys = () => {
   }, [user]);
 
   // useEffect(() => {
-  //   fetch(`http://localhost:5000/myToysSorting?sort=${asc ? "asc" : "desc"}`)
+  //   fetch(`https://7-twelve-toymart-server.vercel.app/myToysSorting?sort=${asc ? "asc" : "desc"}`)
   //     .then((res) => res.json())
   //     .then((data) => setToys(data));
   // }, []);
   
 
   const handleDelete = (id) => {
-    fetch(`http://localhost:5000/bookingsToys/${id}`, {
+    fetch(`https://7-twelve-toymart-server.vercel.app/bookingsToys/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

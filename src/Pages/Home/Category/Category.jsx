@@ -8,7 +8,7 @@ const Category = () => {
   const [activeTab, setActiveTab] = useState("");
 
   useEffect(() => {
-    fetch(`http://localhost:5000/searceToyByName/${activeTab}`)
+    fetch(`https://7-twelve-toymart-server.vercel.app/searceToyByName/${activeTab}`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -17,7 +17,7 @@ const Category = () => {
   }, [activeTab]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/toys")
+    fetch("https://7-twelve-toymart-server.vercel.app/toys")
       .then((res) => res.json())
       .then((data) => {
         console.log(data)

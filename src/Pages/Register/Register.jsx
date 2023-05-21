@@ -44,7 +44,7 @@ const Register = () => {
       .catch((error) => setError(error.message));
 
       useEffect(() => {
-        fetch("http://localhost:5000/toys")
+        fetch("https://7-twelve-toymart-server.vercel.app/toys")
           .then((res) => res.json())
           .then((data) => {
             console.log(data)
