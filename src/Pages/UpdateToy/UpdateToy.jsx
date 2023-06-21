@@ -31,13 +31,13 @@ const UpdateToy = () => {
     console.log(insertBody);
 
     fetch(`https://7-twelve-toymart-server.vercel.app/updateToy/${id}`, {
+   
       method: "PUT",
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify(insertBody),
-    })
-      .then((res) => res.json())
+      body:JSON.stringify(insertBody)
+    }).then((res) => res.json())
       .then((data) => {
         console.log(data);
         if (data.modifiedCount > 0) {

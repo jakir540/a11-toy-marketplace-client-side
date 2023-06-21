@@ -18,8 +18,8 @@ const Home = () => {
           />
         </div>
         <div>
-          <div className="w-80  border-gray-600 border-8  h-60 bg-transparent shadow-2xl  absolute lg:top-[95px] top-[650px] right-0 lg:right-64  "></div>
-          <div className="w-80  bg-gray-800 px-10  font-semibold  text-white h-60  absolute lg:top-[130px] lg:right-72 right-10 text-center  ">
+          <div className="w-80  border-gray-600 border-8  h-60 bg-transparent shadow-2xl  absolute lg:top-[95px] top-[650px] right-0 lg:right-56  "></div>
+          <div className="w-80  bg-gray-800 px-10  font-semibold  text-white h-60  absolute lg:top-[130px] lg:right-48 right-10 text-center  ">
             <h2 className="font-serif mt-5 text-5xl">
             <span className="text-orange-500">REMOTE</span> <br /> CAR
             </h2>
