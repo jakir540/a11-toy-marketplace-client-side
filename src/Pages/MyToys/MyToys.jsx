@@ -72,7 +72,7 @@ const MyToys = () => {
   // console.log(search);
   return (
     <div className="my-10">
-      <h2 className="text-center text-4xl text-orange-500 font-bold my-5">
+      <h2 className="text-center text-4xl text-orange-600 font-bold my-5">
         Here all my Toys {toys.length}
       </h2>
 

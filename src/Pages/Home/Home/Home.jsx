@@ -5,23 +5,29 @@ import Category from "../Category/Category";
 import Advertisement from "../Advertisement/Advertisement";
 import CustomerReview from "../CustomerReview/CustomerReview";
 import useTitle from "../../../hooks/useTitle";
+import Services from "../Services/Services";
+import Brand from "../Brand/Brand";
+import "./Home.css";
 
 const Home = () => {
-  useTitle('home')
+  useTitle("home");
   return (
     <main>
-      <div className=" w-full lg:mb-16 mb-[500px]">
-        <div className="relative w-full">
-          <img
-            src="https://images.unsplash.com/photo-1613517254043-901337adc0c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=686&q=80"
-            className="w-full h-[600px] object-contain"
-          />
+      <div className=" subHeader w-full lg:mb-16 mb-[500px]">
+        <div className="relative">
+          <div className="relative top-0">
+            {" "}
+            <img
+              src="https://www.piletasyjuguetes.com/wp-content/uploads/2019/08/jugetes.png"
+              alt=""
+            />
+          </div>
         </div>
         <div>
           <div className="w-80  border-gray-600 border-8  h-60 bg-transparent shadow-2xl  absolute lg:top-[95px] top-[650px] right-0 lg:right-56  "></div>
           <div className="w-80  bg-gray-800 px-10  font-semibold  text-white h-60  absolute lg:top-[130px] lg:right-48 right-10 text-center  ">
             <h2 className="font-serif mt-5 text-5xl">
-            <span className="text-orange-500">REMOTE</span> <br /> CAR
+              <span className="text-orange-500">REMOTE</span> <br /> CAR
             </h2>
             <p></p>
             <button className="btn my-2 border-none bg-orange-800">
@@ -51,8 +57,10 @@ const Home = () => {
         </div>
         <Gallery></Gallery>
         <Category></Category>
-        <CustomerReview></CustomerReview>
         <Advertisement></Advertisement>
+        <Brand></Brand>
+        <Services></Services>
+        <CustomerReview></CustomerReview>
       </section>
     </main>
   );
