@@ -1,39 +1,51 @@
-
 import React, { useRef, useState } from 'react';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 
-
+// Import Swiper styles
 import 'swiper/css';
-import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
-// import './styles.css';
+import './Brand.css';
 
 // import required modules
-import { Navigation } from 'swiper/modules';
-
+import { Pagination } from 'swiper/modules';
 const Brand = () => {
   return (
-    <div className="h-96  bg-slate-500  text-white my-10">
-      <h2 className="text-center text-4xl font-bold text-orange-500">
+    <div className="h-96 my-16">
+      <h2 className="text-center text-4xl font-bold text-orange-500 my-5">
         Our Brands
       </h2>
 
       <h3 className="text-center text-3xl font-semibold">
         More Than Your Average Toy Store
       </h3>
-      <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
-        <SwiperSlide>Slide 1</SwiperSlide>
-        <SwiperSlide>Slide 2</SwiperSlide>
-        <SwiperSlide>Slide 3</SwiperSlide>
-        <SwiperSlide>Slide 4</SwiperSlide>
-        <SwiperSlide>Slide 5</SwiperSlide>
-        <SwiperSlide>Slide 6</SwiperSlide>
-        <SwiperSlide>Slide 7</SwiperSlide>
-        <SwiperSlide>Slide 8</SwiperSlide>
-        <SwiperSlide>Slide 9</SwiperSlide>
+      <div>
+      <>
+      <Swiper
+        slidesPerView={4}
+        spaceBetween={30}
+        centeredSlides={true}
+        pagination={{
+          clickable: true,
+        }}
+        modules={[Pagination]}
+        className="mySwiper my-5"
+      >
+        <div className='my-10'>
+        <SwiperSlide><img src="https://junotoys-html.themerex.net/images/1-3a.png" alt="" /></SwiperSlide>
+        <SwiperSlide><img src="https://junotoys-html.themerex.net/images/5-1a.png" alt="" /></SwiperSlide>
+        <SwiperSlide><img src="https://junotoys-html.themerex.net/images/2-3.png" alt="" /></SwiperSlide>
+        <SwiperSlide><img src="https://junotoys-html.themerex.net/images/4-3.png" alt="" /></SwiperSlide>
+        <SwiperSlide><img src="https://junotoys-html.themerex.net/images/2-3.png" alt="" /></SwiperSlide>
+        <SwiperSlide><img src="https://junotoys-html.themerex.net/images/4-3.png" alt="" /></SwiperSlide>
+        <SwiperSlide ><img src="https://junotoys-html.themerex.net/images/3-2a.png" alt="" /></SwiperSlide>
+        </div>
+      
+       
       </Swiper>
-
+    </>
+      </div>
     </div>
   );
 };

@@ -8,6 +8,7 @@ import useTitle from "../../../hooks/useTitle";
 import Services from "../Services/Services";
 import Brand from "../Brand/Brand";
 import "./Home.css";
+import Blog from "../Blog/Blog";
 
 const Home = () => {
   useTitle("home");
@@ -60,6 +61,7 @@ const Home = () => {
         <Advertisement></Advertisement>
         <Brand></Brand>
         <Services></Services>
+        <Blog></Blog>
         <CustomerReview></CustomerReview>
       </section>
     </main>
