@@ -5,7 +5,7 @@ import { BsArrowReturnLeft } from "react-icons/bs";
 import { BiSupport } from "react-icons/bi";
 const Services = () => {
   return (
-    <div className="h-96 bg-green-600 flex items-center justify-center px-8 text-white">
+    <div className="lg:h-96 bg-green-600 lg:flex items-center justify-center px-8 text-white">
 
       <div className="w-72">
         <div className="text-7xl text-white">

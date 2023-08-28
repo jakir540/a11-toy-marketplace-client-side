@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { FaGoogle } from "react-icons/fa";
 import { MdToys } from "react-icons/all";
+import "./Footer.css"
 
 
 const Footer = () => {
@@ -11,7 +12,7 @@ const Footer = () => {
 
 
   return (
-    <div className="bg-gray-800 mt-10">
+    <div className=" footer bg-gray-800 mt-10">
       <footer className=" max-w-7xl mx-auto footer p-10  text-white">
         <div className="flex flex-col items-center">
           <div className="text-6xl text-orange-600">
