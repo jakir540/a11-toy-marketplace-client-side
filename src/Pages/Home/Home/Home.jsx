@@ -13,6 +13,7 @@ import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { TypeAnimation } from "react-type-animation";
+import NewCategories from "../NewCategories/NewCategories";
 
 const Home = () => {
   useEffect(() => {
@@ -126,6 +127,7 @@ const Home = () => {
         </div>
         <Gallery></Gallery>
         <Category></Category>
+        <NewCategories></NewCategories>
         <Advertisement></Advertisement>
         <Brand></Brand>
         <Services></Services>
