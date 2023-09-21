@@ -2,3 +2,12 @@
     /* background-image: url('../../../assets/v915-red-blue_53876-174923.avif'); */
     border-radius: 200px 200px 0%;
 }
+
+@media screen and (max-width: 769px) {
+    
+    .footer{
+
+        border-radius: 10px 10px 0%;
+    }
+
+}
