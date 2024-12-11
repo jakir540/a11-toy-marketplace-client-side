@@ -8,7 +8,9 @@ const Category = () => {
   const [activeTab, setActiveTab] = useState("");
 
   useEffect(() => {
-    fetch(`https://7-twelve-toymart-server.vercel.app/searceToyByName/${activeTab}`)
+    fetch(
+      `https://7-twelve-toymart-server.vercel.app/searceToyByName/${activeTab}`
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -20,7 +22,7 @@ const Category = () => {
     fetch("https://7-twelve-toymart-server.vercel.app/toys")
       .then((res) => res.json())
       .then((data) => {
-        console.log(data)
+        console.log(data);
         setToys(data);
       });
   }, []);
@@ -69,7 +71,7 @@ const Category = () => {
 
       <div className=" max-w-7xl grid lg:grid-cols-3 mx-auto gap-4 my-16">
         {toys.map((toy) => (
-          <Toy key={toy._id} toy={toy} ></Toy>
+          <Toy key={toy._id} toy={toy}></Toy>
         ))}
       </div>
     </div>

@@ -41,13 +41,6 @@ const CustomerReview = () => {
                     assumenda excepturi exercitationem quasi. In deleniti eaque
                     aut repudiandae et a id nisi.
                   </p>
-                  <div>
-                    <img
-                      className="h-16 w-20 mx-auto"
-                      src="https://www.signwell.com/assets/vip-signatures/muhammad-ali-signature-6a40cd5a6c27559411db066f62d64886c42bbeb03b347237ffae98b0b15e0005.svg"
-                      alt=""
-                    />
-                  </div>
                 </div>
               </div>
             </div>
@@ -80,17 +73,11 @@ const CustomerReview = () => {
                     assumenda excepturi exercitationem quasi. In deleniti eaque
                     aut repudiandae et a id nisi.
                   </p>
-                  <div>
-                    <img
-                      className="h-16 w-20 mx-auto"
-                      src="https://www.signwell.com/assets/vip-signatures/muhammad-ali-signature-6a40cd5a6c27559411db066f62d64886c42bbeb03b347237ffae98b0b15e0005.svg"
-                      alt=""
-                    />
-                  </div>
                 </div>
               </div>
             </div>
           </SwiperSlide>
+
           <SwiperSlide>
             {" "}
             <div className="hero h-[500px] bg-base-200 shadow-2xl">
@@ -118,17 +105,11 @@ const CustomerReview = () => {
                     assumenda excepturi exercitationem quasi. In deleniti eaque
                     aut repudiandae et a id nisi.
                   </p>
-                  <div>
-                    <img
-                      className="h-16 w-20 mx-auto"
-                      src="https://www.signwell.com/assets/vip-signatures/muhammad-ali-signature-6a40cd5a6c27559411db066f62d64886c42bbeb03b347237ffae98b0b15e0005.svg"
-                      alt=""
-                    />
-                  </div>
                 </div>
               </div>
             </div>
           </SwiperSlide>
+
           <SwiperSlide>
             {" "}
             <div className="hero h-[500px] bg-base-200 shadow-2xl">
@@ -156,14 +137,6 @@ const CustomerReview = () => {
                     assumenda excepturi exercitationem quasi. In deleniti eaque
                     aut repudiandae et a id nisi.
                   </p>
-
-                  <div>
-                    <img
-                      className="h-16 w-20 mx-auto"
-                      src="https://www.signwell.com/assets/vip-signatures/muhammad-ali-signature-6a40cd5a6c27559411db066f62d64886c42bbeb03b347237ffae98b0b15e0005.svg"
-                      alt=""
-                    />
-                  </div>
                 </div>
               </div>
             </div>
