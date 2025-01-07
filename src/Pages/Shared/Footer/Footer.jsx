@@ -21,7 +21,7 @@ const Footer = () => {
   };
 
   return (
-    <div className="footer bg-gradient-to-t from-gray-900 via-gray-800 to-gray-700 text-white py-10">
+    <div className="footer bg-gradient-to-t from-gray-900 via-gray-800 to-gray-700 text-white py-10 mt-5">
       <footer className="max-w-7xl mx-auto px-6">
         {/* Logo Section */}
         <div className="flex flex-col items-center mb-12">
