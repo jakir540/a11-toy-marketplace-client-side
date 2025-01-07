@@ -1,87 +1,266 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { FaGoogle } from "react-icons/fa";
-import { MdToys } from "react-icons/all";
-import "./Footer.css"
-
+import {
+  FaGoogle,
+  FaFacebook,
+  FaTwitter,
+  FaYoutube,
+  FaInstagram,
+  FaLinkedin,
+} from "react-icons/fa";
+import { MdToys, MdEmail, MdPhone, MdLocationOn } from "react-icons/md";
+import "./Footer.css";
 
 const Footer = () => {
+  const [email, setEmail] = useState("");
 
-  
-
-
+  const handleNewsletterSubmit = (e) => {
+    e.preventDefault();
+    alert(`Subscribed with ${email}!`);
+    setEmail(""); // Clear input after submission
+  };
 
   return (
-    <div className=" footer bg-gray-800 mt-10">
-      <footer className=" max-w-7xl mx-auto footer p-10  text-white">
-        <div className="flex flex-col items-center">
-          <div className="text-6xl text-orange-600">
-            <MdToys></MdToys>
+    <div className="footer bg-gradient-to-t from-gray-900 via-gray-800 to-gray-700 text-white py-10">
+      <footer className="max-w-7xl mx-auto px-6">
+        {/* Logo Section */}
+        <div className="flex flex-col items-center mb-12">
+          <div className="text-6xl text-orange-500">
+            <MdToys />
           </div>
+          <h2 className="text-3xl font-bold font-serif text-white mt-2">
+            BD-Toy
+            <span className="text-orange-500">Mart</span>
+          </h2>
+        </div>
+
+        {/* Main Footer Links Section */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
           <div>
-            <h2 className="text-white ml-5 font-serif font-semibold">
-              BD-Toy
-              <span className="text-orange-600 font-bold text-3xl">Mart</span>
-            </h2>
+            <h3 className="footer-title text-lg font-semibold text-orange-500 mb-4">
+              Services
+            </h3>
+            <ul className="space-y-2">
+              <li>
+                <Link to="/" className="hover:text-orange-400 transition">
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/all-toys"
+                  className="hover:text-orange-400 transition"
+                >
+                  All Toys
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/add-toy"
+                  className="hover:text-orange-400 transition"
+                >
+                  Add Toy
+                </Link>
+              </li>
+              <li>
+                <Link to="/blogs" className="hover:text-orange-400 transition">
+                  Blogs
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="footer-title text-lg font-semibold text-orange-500 mb-4">
+              Company
+            </h3>
+            <ul className="space-y-2">
+              <li>
+                <Link to="/about" className="hover:text-orange-400 transition">
+                  About Us
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/contact"
+                  className="hover:text-orange-400 transition"
+                >
+                  Contact
+                </Link>
+              </li>
+              <li>
+                <Link to="/jobs" className="hover:text-orange-400 transition">
+                  Jobs
+                </Link>
+              </li>
+              <li>
+                <Link to="/press" className="hover:text-orange-400 transition">
+                  Press Kit
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="footer-title text-lg font-semibold text-orange-500 mb-4">
+              Connect with Us
+            </h3>
+            <div className="flex justify-center md:justify-start gap-4">
+              <Link
+                to="/"
+                className="text-2xl hover:text-orange-400 transition"
+              >
+                <FaFacebook />
+              </Link>
+              <Link
+                to="/"
+                className="text-2xl hover:text-orange-400 transition"
+              >
+                <FaTwitter />
+              </Link>
+              <Link
+                to="/"
+                className="text-2xl hover:text-orange-400 transition"
+              >
+                <FaInstagram />
+              </Link>
+              <Link
+                to="/"
+                className="text-2xl hover:text-orange-400 transition"
+              >
+                <FaLinkedin />
+              </Link>
+              <Link
+                to="/"
+                className="text-2xl hover:text-orange-400 transition"
+              >
+                <FaYoutube />
+              </Link>
+            </div>
           </div>
         </div>
 
-        <div>
-          <span className="footer-title">Services</span>
-          <Link className="link link-hover">Home</Link>
-          <Link className="link link-hover">All Toys</Link>
-          <Link className="link link-hover">Add Toy</Link>
-          <Link className="link link-hover">Blogs</Link>
+        {/* Newsletter Subscription Section */}
+        <div className="mb-12 text-center">
+          <h3 className="footer-title text-lg font-semibold text-orange-500 mb-4">
+            Subscribe to Our Newsletter
+          </h3>
+          <form
+            onSubmit={handleNewsletterSubmit}
+            className="flex justify-center"
+          >
+            <input
+              type="email"
+              className="px-4 py-2 w-64 md:w-80 rounded-l-lg text-black focus:outline-none"
+              placeholder="Enter your email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+            <button
+              type="submit"
+              className="bg-orange-500 text-white px-6 py-2 rounded-r-lg hover:bg-orange-600 transition"
+            >
+              Subscribe
+            </button>
+          </form>
         </div>
-        <div>
-          <span className="footer-title">Company</span>
-          <Link className="link link-hover">About us</Link>
-          <Link className="link link-hover">Contact</Link>
-          <Link className="link link-hover">Jobs</Link>
-          <Link className="link link-hover">Press kit</Link>
-        </div>
-        <div>
-          <span className="footer-title">Social</span>
-          <div className="grid grid-flow-col gap-4">
-            <Link>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                className="fill-current"
-              >
-                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"></path>
-              </svg>
-            </Link>
-            <Link>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                className="fill-current"
-              >
-                <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"></path>
-              </svg>
-            </Link>
-            <Link>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                className="fill-current"
-              >
-                <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"></path>
-              </svg>
-            </Link>
-            <Link>
-              <div className="text-2xl">
-                <FaGoogle></FaGoogle>
-              </div>
-            </Link>
+
+        {/* Contact Information Section */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 mb-12">
+          <div>
+            <h3 className="footer-title text-lg font-semibold text-orange-500 mb-4">
+              Contact Information
+            </h3>
+            <ul className="space-y-2">
+              <li className="flex items-center">
+                <MdLocationOn className="mr-2 text-orange-500" />
+                <span>123 Toy Street, Dhaka, Bangladesh</span>
+              </li>
+              <li className="flex items-center">
+                <MdPhone className="mr-2 text-orange-500" />
+                <span>+880 123 456 789</span>
+              </li>
+              <li className="flex items-center">
+                <MdEmail className="mr-2 text-orange-500" />
+                <span>support@bdtoy.com</span>
+              </li>
+            </ul>
           </div>
+
+          <div>
+            <h3 className="footer-title text-lg font-semibold text-orange-500 mb-4">
+              FAQs
+            </h3>
+            <ul className="space-y-2">
+              <li>
+                <Link
+                  to="/faq#shipping"
+                  className="hover:text-orange-400 transition"
+                >
+                  Shipping & Delivery
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/faq#returns"
+                  className="hover:text-orange-400 transition"
+                >
+                  Returns & Exchanges
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/faq#payment"
+                  className="hover:text-orange-400 transition"
+                >
+                  Payment Options
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/faq#order-tracking"
+                  className="hover:text-orange-400 transition"
+                >
+                  Order Tracking
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="footer-title text-lg font-semibold text-orange-500 mb-4">
+              Legal
+            </h3>
+            <ul className="space-y-2">
+              <li>
+                <Link to="/terms" className="hover:text-orange-400 transition">
+                  Terms & Conditions
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/privacy"
+                  className="hover:text-orange-400 transition"
+                >
+                  Privacy Policy
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/cookies"
+                  className="hover:text-orange-400 transition"
+                >
+                  Cookie Policy
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Footer Bottom */}
+        <div className="text-center text-sm text-gray-400">
+          © {new Date().getFullYear()} BD-ToyMart. All rights reserved.
         </div>
       </footer>
     </div>

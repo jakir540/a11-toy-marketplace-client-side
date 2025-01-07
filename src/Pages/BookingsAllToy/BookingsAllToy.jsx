@@ -4,100 +4,81 @@ import useTitle from "../../hooks/useTitle";
 import { AuthContext } from "../../Provider/AuthProvider";
 
 const BookingsAllToy = () => {
-  const {loading} = useContext(AuthContext)
+  const { loading } = useContext(AuthContext);
   const [allToys, setAllToys] = useState([]);
-  const [user,setUser] = useState(null)
-  const [searchText,setSearchText] = useState("")
-  useTitle("all toys")
+  const [searchText, setSearchText] = useState("");
+  useTitle("All Toys");
 
   useEffect(() => {
     fetch("https://7-twelve-toymart-server.vercel.app/getToy")
       .then((res) => res.json())
       .then((data) => {
-       if (loading) {
-        <progress
-        className="progress w-56"
-        value="100"
-        max="100"
-      ></progress>
-       }
         setAllToys(data);
       });
   }, []);
 
-const handleSearce =()=>{
-  fetch(`https://7-twelve-toymart-server.vercel.app/toySearceByName/${searchText}`)
-  .then(res => res.json())
-  .then(data => {
-   
-    setAllToys(data)
-  })
- 
-
-}
-    
+  const handleSearch = () => {
+    fetch(
+      `https://7-twelve-toymart-server.vercel.app/toySearceByName/${searchText}`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        setAllToys(data);
+      });
+  };
 
   return (
-    <div className="mt-5">
-      <div className="flex justify-center flex-col gap-4">
-        <h1 className="text-center text-4xl text-orange-500 font-bold">
-          All Toys {allToys.length}
+    <div className="mt-5 bg-gradient-to-b from-gray-50 to-gray-100 py-8">
+      <div className="flex justify-center flex-col gap-6">
+        <h1 className="text-center text-5xl font-extrabold text-orange-600 tracking-wide">
+          All Toys ({allToys.length})
         </h1>
 
-        <div className=" w-[400px]  mx-auto h-[100px] ">
-         
-            <div className="flex flex-col items-center my-3  ">
-              <div className="flex gap-4">
-
-                <input
-                  className="p-3   shadow-2xl rounded-md border border-orange-500 "
-                  type="text"
-                  onChange={(e) => setSearchText(e.target.value)}
-                  name="name"
-                  placeholder="Enter Toy Name"
-                />
-
-
-                <button                  
-                  type="submit"
-                onClick={handleSearce}
-                  className="bg-slate-500 p-3 btn border-none w-32"
-                >
-                  searce toy
-                </button>
-
-
-              </div>
-            </div>
-        
+        <div className="flex justify-center">
+          <div className="relative w-[400px]">
+            <input
+              className="w-full p-3 rounded-lg border border-orange-500 shadow-lg text-gray-700 focus:ring-2 focus:ring-orange-400 focus:outline-none transition duration-300"
+              type="text"
+              onChange={(e) => setSearchText(e.target.value)}
+              name="name"
+              placeholder="Search for a toy..."
+            />
+            <button
+              onClick={handleSearch}
+              className="absolute right-2 top-2 bg-orange-500 text-white py-2 px-4 rounded-lg shadow-md hover:shadow-lg hover:bg-orange-600 transition duration-300"
+            >
+              Search
+            </button>
+          </div>
         </div>
       </div>
 
-      <div className=" flex justify-center ">
-        <div className=" max-w-7xl w-full ">
-          <table className="table w-full">
-            {/* head */}
-            <thead>
-              <tr>
-                <th>Seller & Toy Name</th>
-                <th>Price</th>
-                <th>Availabel Quantity</th>
-                <th>Sub-Category</th>
-                <th></th>
-               
-              </tr>
-            </thead>
-            <tbody>
-              {/* row */}
-              {allToys.map((toy) => (
-                <SingleRow key={toy._id} 
-                
-                toy={toy}                           
-                
-                ></SingleRow>
-              ))}
-            </tbody>
-          </table>
+      <div className="flex justify-center mt-10">
+        <div className="max-w-7xl w-full">
+          <div className="overflow-x-auto shadow-xl rounded-lg bg-white">
+            <table className="table-auto w-full text-center border-collapse">
+              {/* Table Head */}
+              <thead className="bg-orange-500 text-white">
+                <tr>
+                  <th className="p-4 text-lg">Seller & Toy Name</th>
+                  <th className="p-4 text-lg">Price</th>
+                  <th className="p-4 text-lg">Available Quantity</th>
+                  <th className="p-4 text-lg">Sub-Category</th>
+                  <th className="p-4 text-lg">Actions</th>
+                </tr>
+              </thead>
+              <tbody className="text-gray-800">
+                {allToys.map((toy) => (
+                  <SingleRow key={toy._id} toy={toy} />
+                ))}
+              </tbody>
+            </table>
+            {allToys.length === 0 && (
+              <p className="text-center text-lg text-gray-500 py-10">
+                No toys found. Try searching for something else.
+              </p>
+            )}
+          </div>
         </div>
       </div>
     </div>
