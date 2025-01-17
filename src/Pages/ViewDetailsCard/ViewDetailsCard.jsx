@@ -98,7 +98,7 @@ const ViewDetailsCard = () => {
           </div>
         </div>
       </div>
-      <div className="mt-8">
+      <div className="mt-24">
         <h3 className="text-2xl font-bold mb-4">Customer Reviews</h3>
         <div className="space-y-4">
           {/* Placeholder for reviews */}

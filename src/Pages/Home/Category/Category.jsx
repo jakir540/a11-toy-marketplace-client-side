@@ -32,8 +32,8 @@ const Category = () => {
   };
 
   return (
-    <div className="my-10">
-      <div className="flex  flex-col justify-center items-center gap-3">
+    <div className="my-10  flex justify-between gap-4 ">
+      <div className=" w-[14%]  flex  flex-col justify-start items-start gap-3 mt-16">
         <button
           onClick={() => handleTabClick("allToys")}
           className="btn text-center font-semibold"
@@ -69,7 +69,8 @@ const Category = () => {
         </Tabs>
       </div>
 
-      <div className=" max-w-7xl grid lg:grid-cols-3 mx-auto gap-4 my-16">
+      <div className=" w-[84%] max-w-7xl grid lg:grid-cols-3 mx-auto gap-4 my-16">
+        {/* right side */}
         {toys.map((toy) => (
           <Toy key={toy._id} toy={toy}></Toy>
         ))}
