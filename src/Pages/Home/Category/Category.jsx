@@ -8,14 +8,16 @@ const Category = () => {
   const [activeTab, setActiveTab] = useState("");
 
   useEffect(() => {
-    fetch(
-      `https://7-twelve-toymart-server.vercel.app/searceToyByName/${activeTab}`
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        setToys(data);
-      });
+    if (activeTab) {
+      fetch(
+        `https://7-twelve-toymart-server.vercel.app/searceToyByName/${activeTab}`
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          setToys(data);
+        });
+    }
   }, [activeTab]);
 
   useEffect(() => {
@@ -32,48 +34,54 @@ const Category = () => {
   };
 
   return (
-    <div className="my-10  flex justify-between gap-4 ">
-      <div className=" w-[14%]  flex  flex-col justify-start items-start gap-3 mt-16">
+    <div className="my-10 flex flex-wrap gap-6 justify-center">
+      {/* Left Side Tabs */}
+      <div className="w-full lg:w-[20%] flex flex-col items-start gap-4 mt-6 bg-gray-100 px-5">
         <button
           onClick={() => handleTabClick("allToys")}
-          className="btn text-center font-semibold"
+          className={`w-full py-3 text-center font-semibold text-gray-900 rounded-lg ${
+            activeTab === "allToys" ? "shadow-lg" : ""
+          }`}
         >
-          {" "}
-          All Category toys {toys.length}
+          All Category Toys ({toys.length})
         </button>
 
         <Tabs>
-          <TabList>
-            <Tab
-              onClick={() => handleTabClick("bus")}
-              className="btn text-center font-semibold mx-3 bg-orange-900 border-none "
-            >
-              {" "}
-              Buses
-            </Tab>
-            <Tab
-              onClick={() => handleTabClick("Bikes")}
-              className="btn text-center font-semibold mx-3 bg-orange-900 border-none "
-            >
-              {" "}
-              Bikes
-            </Tab>
-            <Tab
-              onClick={() => handleTabClick("Trucks")}
-              className="btn text-center font-semibold mx-3 bg-orange-900 border-none "
-            >
-              {" "}
-              Trucks
-            </Tab>
+          <TabList className="flex flex-col gap-2 justify-center ps-10">
+            {[
+              { label: "Buses", value: "bus" },
+              { label: "Bikes", value: "Bikes" },
+              { label: "Trucks", value: "Trucks" },
+            ].map((tab) => (
+              <Tab
+                key={tab.value}
+                onClick={() => handleTabClick(tab.value)}
+                className={`py-2 px-4 text-white rounded-lg bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 transition duration-300 text-center cursor-pointer ${
+                  activeTab === tab.value ? "shadow-md" : ""
+                }`}
+              >
+                {tab.label}
+              </Tab>
+            ))}
           </TabList>
         </Tabs>
       </div>
 
-      <div className=" w-[84%] max-w-7xl grid lg:grid-cols-3 mx-auto gap-4 my-16">
-        {/* right side */}
+      {/* Right Side Toys Grid */}
+      <div className="w-full lg:w-[75%] grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mx-auto">
         {toys.map((toy) => (
-          <Toy key={toy._id} toy={toy}></Toy>
+          <div
+            key={toy._id}
+            className="p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition duration-300 transform hover:scale-105"
+          >
+            <Toy toy={toy} />
+          </div>
         ))}
+        {toys.length === 0 && (
+          <p className="text-center text-gray-500 col-span-full">
+            No toys available in this category.
+          </p>
+        )}
       </div>
     </div>
   );
