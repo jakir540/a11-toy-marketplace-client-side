@@ -23,7 +23,7 @@ const NewCategories = () => {
 
   return (
     <div className="my-10 px-10">
-      <div className="text-center text-2xl capitalize font-semibold">
+      <div className="text-center text-4xl py-5 capitalize font-semibold">
         <h1>Upcoming New Categories</h1>
       </div>
 
@@ -232,7 +232,9 @@ const NewCategories = () => {
         </div>
 
         <div className=" lg:w-1/3  p-5 ">
-          <h2 className="text-center font-semibold text-2xl mt-10">Dragon Toys</h2>
+          <h2 className="text-center font-semibold text-2xl mt-10">
+            Dragon Toys
+          </h2>
 
           <div className="my-10">
             <Swiper
@@ -500,8 +502,6 @@ const NewCategories = () => {
                 </div>
               </SwiperSlide>
 
-
-            
               <div
                 className="autoplay-progress mt-[-130px]"
                 slot="container-end"
