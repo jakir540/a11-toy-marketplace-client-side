@@ -1,18 +1,20 @@
 import React, { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import { Link } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { updateProfile } from "firebase/auth";
 import useTitle from "../../hooks/useTitle";
+import carSvg from "../../assets/carlogin.jpg"; // Import your SVG image here
 
 const Register = () => {
   const { createAuthUser } = useContext(AuthContext);
-  const [user,setUser] = useState(null)
-  const [error,setError] = useState("")
-  useTitle("register")
+  const [error, setError] = useState("");
+  const [user, setUser] = useState(null);
+  const navigate = useNavigate();
+  useTitle("Register");
 
   const handleRegistration = (event) => {
-    setError("")
+    setError("");
     event.preventDefault();
     const form = event.target;
     const name = form.name.value;
@@ -20,104 +22,143 @@ const Register = () => {
     const password = form.password.value;
     const photo = form.photo.value;
     form.reset();
-    console.log(name, email, password, photo);
 
     if (password.length < 6) {
-      setError('Password Must be give minimum 6 character')
+      setError("Password must be at least 6 characters");
+      return;
     }
 
     createAuthUser(email, password)
       .then((result) => {
         const user = result.user;
-        user.displayName = name;
-        user.photURL = photo;
-        updateProfile(name,photo)
-        console.log(user);
-        Swal.fire({
-          position: "top-end",
-          icon: "success",
-          title: "Register Successfully",
-          showConfirmButton: false,
-          timer: 2000,
-        });
+        updateProfile(user, { displayName: name, photoURL: photo })
+          .then(() => {
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: "Registered Successfully",
+              showConfirmButton: false,
+              timer: 2000,
+            });
+            navigate("/login");
+          })
+          .catch((error) => setError(error.message));
       })
       .catch((error) => setError(error.message));
-
-      useEffect(() => {
-        fetch("https://7-twelve-toymart-server.vercel.app/toys")
-          .then((res) => res.json())
-          .then((data) => {
-            console.log(data)
-            setToys(data);
-          });
-      }, []);
-
-
-
-
-
-
-
   };
 
   return (
-    <div>
-      <h1 className="text-center text-4xl text-orange-500 text-bold mt-10">
-        Registration Please
-      </h1>
-      <div className=" w-[420px]  bg-slate-200 mx-auto h-[500px] my-16 rounded-lg shadow-2xl">
-        <form onSubmit={handleRegistration}>
-          <div className="flex flex-col items-center mt-16 p-12  ">
-            <input
-              className="p-3  mb-6 mt-4  shadow-2xl rounded-md "
-              type="text"
-              name="name"
-              placeholder="Enter Your Name"
-            />
-            <input
-              className="p-3  mb-6  shadow-2xl rounded-md "
-              type="email"
-              name="email"
-              placeholder="Enter Your Email"
-            />
+    <div className="flex flex-col md:flex-row min-h-screen bg-[#ffffff]">
+      {/* Left Side: Illustration */}
+      <div className="hidden md:flex w-full md:w-1/2 items-center justify-center p-8">
+        <img
+          src={carSvg}
+          alt="Car Illustration"
+          className="w-full object-cover rounded-lg transition-transform transform hover:scale-105 duration-300 ease-in-out"
+        />
+      </div>
 
-            <input
-              className="p-3  shadow-2xl rounded-md mb-6 "
-              type="password"
-              name="password"
-              placeholder="Password"
-            />
+      {/* Right Side: Registration Form */}
+      <div className="flex items-center justify-center w-full md:w-1/2 p-8">
+        <div className="w-full max-w-md bg-white shadow-2xl rounded-lg p-8 transform hover:translate-y-[-5px] hover:shadow-xl transition duration-300 ease-in-out">
+          <h2 className="text-4xl font-bold text-center text-gray-800 mb-6">
+            Create an Account
+          </h2>
+          <p className="text-center text-gray-600 mb-8">
+            Register to start your journey with us.
+          </p>
 
-            <input
-              className="p-3  shadow-2xl rounded-md "
-              type="url"
-              name="photo"
-              placeholder="Photo URL"
-            />
+          <form onSubmit={handleRegistration}>
+            <div className="mb-6">
+              <label
+                htmlFor="name"
+                className="block text-gray-700 font-medium mb-2"
+              >
+                Full Name
+              </label>
+              <input
+                id="name"
+                type="text"
+                name="name"
+                className="w-full p-4 border border-gray-300 rounded-lg shadow-inner focus:ring-2 focus:ring-orange-400 focus:outline-none"
+                placeholder="Enter your full name"
+                required
+              />
+            </div>
+            <div className="mb-6">
+              <label
+                htmlFor="email"
+                className="block text-gray-700 font-medium mb-2"
+              >
+                Email Address
+              </label>
+              <input
+                id="email"
+                type="email"
+                name="email"
+                className="w-full p-4 border border-gray-300 rounded-lg shadow-inner focus:ring-2 focus:ring-orange-400 focus:outline-none"
+                placeholder="Enter your email"
+                required
+              />
+            </div>
+            <div className="mb-6">
+              <label
+                htmlFor="password"
+                className="block text-gray-700 font-medium mb-2"
+              >
+                Password
+              </label>
+              <input
+                id="password"
+                type="password"
+                name="password"
+                className="w-full p-4 border border-gray-300 rounded-lg shadow-inner focus:ring-2 focus:ring-orange-400 focus:outline-none"
+                placeholder="Enter your password"
+                required
+              />
+            </div>
+            <div className="mb-6">
+              <label
+                htmlFor="photo"
+                className="block text-gray-700 font-medium mb-2"
+              >
+                Photo URL
+              </label>
+              <input
+                id="photo"
+                type="url"
+                name="photo"
+                className="w-full p-4 border border-gray-300 rounded-lg shadow-inner focus:ring-2 focus:ring-orange-400 focus:outline-none"
+                placeholder="Enter your photo URL"
+              />
+            </div>
+
+            {error && (
+              <p className="text-red-500 text-sm text-center mb-4">{error}</p>
+            )}
 
             <button
-              // onClick={handleRegistration}
               type="submit"
-              className="bg-slate-500 p-3 mt-10 btn border-none w-32"
+              className="w-full py-3 bg-gradient-to-r from-orange-500 to-orange-700 text-white rounded-lg font-semibold shadow-md hover:shadow-lg transition transform hover:scale-105"
             >
               Register
             </button>
+          </form>
 
-            <div className="mt-6">
-              <p>
-                <small>
-                  if you have an account please{" "}
-                  <Link className="text-orange-600" to="/login">
-                    login
-                  </Link>{" "}
-                  first
-                </small>
-              </p>
-            </div>
+          <p className="text-center text-gray-600 mt-6">
+            Already have an account?{" "}
+            <Link
+              to="/login"
+              className="text-orange-500 font-semibold hover:underline"
+            >
+              Login Now
+            </Link>
+          </p>
+
+          <div className="my-6 flex items-center justify-center">
+            <div className="h-px w-1/3 bg-gray-300"></div>
           </div>
-
-          <p className="form-text text-red-500 text-center">{error}</p>
-        </form>
+        </div>
       </div>
     </div>
   );
