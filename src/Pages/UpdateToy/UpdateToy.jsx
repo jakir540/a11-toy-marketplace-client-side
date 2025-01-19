@@ -1,23 +1,31 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import Swal from "sweetalert2";
+import {
+  FaImage,
+  FaPencilAlt,
+  FaStar,
+  FaDollarSign,
+  FaRegEdit,
+} from "react-icons/fa";
 
 const UpdateToy = () => {
   const { id } = useParams();
   console.log({ id });
+
   const handleUpdate = (event) => {
     event.preventDefault();
     const form = event.target;
 
     const name = form.name.value;
     const email = form.email.value;
-
     const photo = form.photo.value;
     const rating = form.rating.value;
     const price = form.price.value;
     const quantity = form.quantity.value;
     const description = form.description.value;
     const category = form.category.value;
+
     const insertBody = {
       name,
       email,
@@ -31,20 +39,20 @@ const UpdateToy = () => {
     console.log(insertBody);
 
     fetch(`https://7-twelve-toymart-server.vercel.app/updateToy/${id}`, {
-   
       method: "PUT",
       headers: {
-        "content-type": "application/json",
+        "Content-Type": "application/json",
       },
-      body:JSON.stringify(insertBody)
-    }).then((res) => res.json())
+      body: JSON.stringify(insertBody),
+    })
+      .then((res) => res.json())
       .then((data) => {
         console.log(data);
         if (data.modifiedCount > 0) {
           Swal.fire({
             position: "top-end",
             icon: "success",
-            title: "updated Successfully",
+            title: "Updated Successfully",
             showConfirmButton: false,
             timer: 2000,
           });
@@ -53,96 +61,189 @@ const UpdateToy = () => {
   };
 
   return (
-    <div>
-      this is update Toy Component
-      <div>
-        <h1 className="text-center text-4xl text-orange-500 text-bold mt-10">
-          Add A Toy
+    <div className="bg-gradient-to-r from-teal-100 to-teal-50 min-h-screen flex justify-center items-center">
+      <div className="w-full max-w-4xl bg-white shadow-lg rounded-lg p-8">
+        <h1 className="text-center text-3xl text-teal-700 font-semibold mb-6">
+          Update Toy Details
         </h1>
-        <div className=" w-[600px]  bg-slate-200 mx-auto h-[700px] my-16 rounded-lg shadow-2xl">
-          <form onSubmit={handleUpdate}>
-            <div className="flex flex-col items-center mt-16 p-12  ">
-              <div className="flex gap-8 mt-3">
-                <input
-                  className="p-3  mb-6 mt-4  shadow-2xl rounded-md "
-                  type="text"
-                  name="name"
-                  placeholder="Enter Your Name"
-                />
+        <form onSubmit={handleUpdate}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Name and Seller Name */}
+            <div className="flex flex-col">
+              <label
+                htmlFor="name"
+                className="text-lg font-medium text-gray-700 mb-2"
+              >
+                Toy Name
+              </label>
+              <input
+                id="name"
+                className="p-4 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-400"
+                type="text"
+                name="name"
+                placeholder="Enter Toy Name"
+                required
+              />
+            </div>
+            <div className="flex flex-col">
+              <label
+                htmlFor="sellerName"
+                className="text-lg font-medium text-gray-700 mb-2"
+              >
+                Seller Name
+              </label>
+              <input
+                id="sellerName"
+                className="p-4 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-400"
+                type="text"
+                name="sellerName"
+                placeholder="Enter Seller Name"
+                required
+              />
+            </div>
 
-                <input
-                  className="p-3  mb-6 mt-4  shadow-2xl rounded-md "
-                  type="text"
-                  name="sellerName"
-                  placeholder="Seller Name"
-                />
-              </div>
+            {/* Email and Category */}
+            <div className="flex flex-col">
+              <label
+                htmlFor="email"
+                className="text-lg font-medium text-gray-700 mb-2"
+              >
+                Seller Email
+              </label>
+              <input
+                id="email"
+                className="p-4 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-400"
+                type="email"
+                name="email"
+                placeholder="Seller Email"
+                required
+              />
+            </div>
+            <div className="flex flex-col">
+              <label
+                htmlFor="category"
+                className="text-lg font-medium text-gray-700 mb-2"
+              >
+                Category
+              </label>
+              <input
+                id="category"
+                className="p-4 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-400"
+                type="text"
+                name="category"
+                placeholder="Category"
+                required
+              />
+            </div>
 
-              <div className="flex gap-8 mt-3">
+            {/* Price and Rating */}
+            <div className="flex flex-col">
+              <label
+                htmlFor="price"
+                className="text-lg font-medium text-gray-700 mb-2"
+              >
+                Price
+              </label>
+              <div className="flex items-center border rounded-md p-4">
+                <FaDollarSign className="text-teal-400 mr-3" />
                 <input
-                  className="p-3  mb-6  shadow-2xl rounded-md "
-                  type="email"
-                  name="email"
-                  placeholder="Seller Email"
-                />
-
-                <input
-                  className="p-3  mb-6 shadow-2xl rounded-md "
-                  type="text"
-                  name="category"
-                  defaultValue="category"
-                />
-              </div>
-
-              <div className="flex gap-8 mt-3">
-                <input
-                  className="p-3  shadow-2xl rounded-md mb-6 "
-                  type="text"
+                  id="price"
+                  className="w-full p-2 focus:outline-none"
+                  type="number"
                   name="price"
-                  defaultValue="price"
-                />
-
-                <input
-                  className="p-3  mb-6 shadow-2xl rounded-md "
-                  type="text"
-                  name="rating"
-                  defaultValue="rating"
+                  placeholder="Enter Price"
+                  required
                 />
               </div>
-
-              <div className="flex gap-8 mt-3">
+            </div>
+            <div className="flex flex-col">
+              <label
+                htmlFor="rating"
+                className="text-lg font-medium text-gray-700 mb-2"
+              >
+                Rating
+              </label>
+              <div className="flex items-center border rounded-md p-4">
+                <FaStar className="text-teal-400 mr-3" />
                 <input
-                  className="p-3  shadow-2xl rounded-md mb-6 "
-                  type="text"
-                  name="quantity"
-                  defaultValue="10"
+                  id="rating"
+                  className="w-full p-2 focus:outline-none"
+                  type="number"
+                  name="rating"
+                  placeholder="Enter Rating"
+                  required
+                  min="1"
+                  max="5"
                 />
+              </div>
+            </div>
 
+            {/* Quantity and Photo URL */}
+            <div className="flex flex-col">
+              <label
+                htmlFor="quantity"
+                className="text-lg font-medium text-gray-700 mb-2"
+              >
+                Quantity
+              </label>
+              <input
+                id="quantity"
+                className="p-4 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-400"
+                type="number"
+                name="quantity"
+                placeholder="Enter Quantity"
+                required
+              />
+            </div>
+            <div className="flex flex-col">
+              <label
+                htmlFor="photo"
+                className="text-lg font-medium text-gray-700 mb-2"
+              >
+                Toy Image URL
+              </label>
+              <div className="flex items-center border rounded-md p-4">
+                <FaImage className="text-teal-400 mr-3" />
                 <input
-                  className="p-3  mb-6 shadow-2xl rounded-md "
+                  id="photo"
+                  className="w-full p-2 focus:outline-none"
                   type="url"
                   name="photo"
-                  defaultValue="URL"
+                  placeholder="Enter Image URL"
+                  required
                 />
               </div>
-
-              <textarea
-                className="p-3  mb-6 mt-5 shadow-2xl rounded-md "
-                type="text"
-                name="description"
-                cols={40}
-                defaultValue="description"
-              />
-
-              <button
-                type="submit"
-                className="bg-slate-500 p-3 mt-10 btn border-none w-32"
-              >
-                Update
-              </button>
             </div>
-          </form>
-        </div>
+
+            {/* Description */}
+            <div className="flex flex-col col-span-2">
+              <label
+                htmlFor="description"
+                className="text-lg font-medium text-gray-700 mb-2"
+              >
+                Description
+              </label>
+              <textarea
+                id="description"
+                className="p-4 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-400"
+                name="description"
+                placeholder="Enter Toy Description"
+                rows="5"
+                required
+              ></textarea>
+            </div>
+          </div>
+
+          {/* Submit Button */}
+          <div className="flex justify-center mt-8">
+            <button
+              type="submit"
+              className="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white rounded-lg shadow-lg transition duration-200 ease-in-out"
+            >
+              <FaPencilAlt className="mr-2 inline" /> Update Toy
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   );
