@@ -1,7 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Blog.css";
-import blog1 from "../../../assets/blog-stem-toys.jpg";
-import blog2 from "../../../assets/carboy.jpeg";
 
 const BlogCard = ({ image, title, description }) => {
   return (
@@ -27,20 +25,19 @@ const BlogCard = ({ image, title, description }) => {
 };
 
 const Blog = () => {
-  const blogs = [
-    {
-      image: blog1,
-      title: "Games for a Rainy Day Play",
-      description:
-        "These are traditional games that are played on a board with pieces or markers. Games like Monopoly involve buying and trading properties.",
-    },
-    {
-      image: blog2,
-      title: "Games for a Holiday Play",
-      description:
-        "These are traditional games that are played on a board with pieces or markers. Games like Monopoly involve buying and trading properties, while Chess is a strategic game.",
-    },
-  ];
+  const [blogs, setBlogs] = useState([]);
+  const [visibleBlogs, setVisibleBlogs] = useState([]);
+
+  useEffect(() => {
+    fetch("https://7-twelve-toymart-server.vercel.app/blog")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setBlogs(data);
+        setVisibleBlogs(data.slice(0, 6));
+        setShowAll(false);
+      });
+  }, []);
 
   return (
     <div className="blog-item bg-fixed bg-gradient-to-b from-gray-900 via-gray-800 to-black py-16">
@@ -49,12 +46,12 @@ const Blog = () => {
           Our Blogs
         </h1>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-          {blogs.map((blog, index) => (
+          {blogs?.map((blog, index) => (
             <BlogCard
               key={index}
-              image={blog.image}
-              title={blog.title}
-              description={blog.description}
+              image={blog?.image}
+              title={blog?.title}
+              description={blog?.description}
             />
           ))}
         </div>

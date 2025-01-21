@@ -30,7 +30,7 @@ const Category = () => {
       .then((data) => {
         console.log(data);
         setToys(data);
-        setVisibleToys(data.slice(0, 9)); // Show first 9 toys initially
+        setVisibleToys(data.slice(0, 6));
         setShowAll(false);
       });
   }, []);
@@ -100,7 +100,7 @@ const Category = () => {
         </div>
 
         {/* Show More Button */}
-        {!showAll && toys.length > 9 && (
+        {!showAll && toys.length > 6 && (
           <div className="w-full flex justify-center mt-5">
             <button
               onClick={handleShowMore}
