@@ -80,6 +80,27 @@ const Category = () => {
               ))}
             </TabList>
           </Tabs>
+          <Tabs>
+            <TabList className="flex flex-col gap-2 justify-center ps-10">
+              <h1>Type</h1>
+              {[
+                { label: "Speedster Flash", value: "Speedster Flash" },
+                { label: "Turbo Blaze", value: "Turbo Blaze" },
+                { label: "Racer X", value: "Racer X" },
+                { label: "Lightning Cruiser", value: "Lightning Cruiser" },
+              ].map((tab) => (
+                <Tab
+                  key={tab.value}
+                  onClick={() => handleTabClick(tab.value)}
+                  className={`py-2 px-4 text-white rounded-lg bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 transition duration-300 text-center cursor-pointer ${
+                    activeTab === tab.value ? "shadow-md" : ""
+                  }`}
+                >
+                  {tab.label}
+                </Tab>
+              ))}
+            </TabList>
+          </Tabs>
         </div>
 
         {/* Right Side Toys Grid */}
