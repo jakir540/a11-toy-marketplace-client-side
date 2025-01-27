@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import PhotoViewer from "photoviewer";
+import "photoviewer/dist/photoviewer.css";
 
 const Gallery = () => {
   useEffect(() => {
@@ -8,6 +10,20 @@ const Gallery = () => {
       duration: 1500,
     });
   }, []);
+
+  // Function to handle fullscreen view
+  const handleViewFullscreen = (src) => {
+    const items = [
+      {
+        src,
+        title: "Stunning Image",
+      },
+    ];
+    const options = {
+      index: 0,
+    };
+    new PhotoViewer(items, options); // Initialize PhotoViewer with the selected image
+  };
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -34,7 +50,10 @@ const Gallery = () => {
               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
             />
             <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
-              <button className="text-white bg-gradient-to-r from-pink-500 to-red-500 py-2 px-4 rounded-lg text-lg font-bold shadow-md hover:from-pink-600 hover:to-red-600">
+              <button
+                onClick={() => handleViewFullscreen(src)}
+                className="text-white bg-gradient-to-r from-pink-500 to-red-500 py-2 px-4 rounded-lg text-lg font-bold shadow-md hover:from-pink-600 hover:to-red-600"
+              >
                 View Fullscreen
               </button>
             </div>
