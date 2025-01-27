@@ -7,20 +7,26 @@ const SingleRow = ({ toy }) => {
 
   return (
     <tr className="bg-white hover:shadow-md transition duration-300 rounded-md border-b border-gray-200">
-      <td className="p-4 flex items-center space-x-4">
-        <div className="w-14 h-14 rounded-lg overflow-hidden shadow-md">
+      <td className="p-4 flex flex-col sm:flex-row items-center sm:space-x-4">
+        <div className="w-20 h-20 sm:w-14 sm:h-14 rounded-lg overflow-hidden shadow-md">
           <img
             src={picture_url}
             alt={name}
             className="object-cover w-full h-full"
           />
         </div>
-        <div>
-          <p className="font-bold text-gray-800">{seller_name}</p>
-          <p className="text-sm text-gray-500">{name}</p>
+        <div className="mt-2 sm:mt-0">
+          <p className="font-bold text-gray-800 text-center sm:text-left">
+            {seller_name}
+          </p>
+          <p className="text-sm text-gray-500 text-center sm:text-left">
+            {name}
+          </p>
         </div>
       </td>
-      <td className="p-4 text-gray-700 font-medium">${price.toFixed(2)}</td>
+      <td className="p-4 text-gray-700 font-medium text-center sm:text-left">
+        ${price.toFixed(2)}
+      </td>
       <td className="p-4 text-center text-gray-700">{quantity}</td>
       <td className="p-4 text-center text-gray-600">{category}</td>
       <td className="p-4 text-center">
